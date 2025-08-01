@@ -10,11 +10,13 @@
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="googlebot" content="index, follow">
     <meta name="bingbot" content="index, follow">
-
+    
+    <!-- Language and Geo Tags -->
     <meta name="language" content="English">
     <meta name="geo.region" content="US">
     <meta name="geo.placename" content="United States">
-
+    
+    <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="AI Calculator: Free Online Calculator Tools with AI Technology">
     <meta property="og:description" content="Professional calculator suite with AI-powered natural language processing. Free scientific, BMI, mortgage, investment, tax, and EMI calculators for all your calculation needs.">
     <meta property="og:type" content="website">
@@ -25,24 +27,26 @@
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="AI Calculator - Advanced Online Calculator Tools">
-
+    
+    <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="AI Calculator: Free Online Calculator Tools with AI Technology">
     <meta name="twitter:description" content="Professional calculator suite with AI-powered natural language processing. Free scientific, BMI, mortgage, investment, tax, and EMI calculators.">
     <meta name="twitter:image" content="https://your-username.github.io/ai-calculator/calculator-preview.jpg">
     <meta name="twitter:image:alt" content="AI Calculator - Advanced Online Calculator Tools">
-
+    
+    <!-- Canonical Link -->
     <link rel="canonical" href="https://your-username.github.io/ai-calculator">
-
+    
+    <!-- Additional SEO Meta Tags -->
     <meta name="theme-color" content="#00d9ff">
     <meta name="msapplication-TileColor" content="#0f172a">
     <meta name="application-name" content="AI Calculator">
     <meta name="apple-mobile-web-app-title" content="AI Calculator">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
+    
+    <!-- Structured Data (JSON-LD) for SEO -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -86,6 +90,7 @@
     }
     </script>
 
+    <!-- Additional Structured Data for Calculator Tools -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -145,567 +150,386 @@
     }
     </script>
 
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'navy': '#0f172a',
-                        'navy-light': '#1e293b',
-                        'navy-lighter': '#334155',
-                        'cyan-bright': '#00ffff',
-                        'lime-bright': '#00ff00',
-                        'accent': '#00d9ff',
-                    },
-                    fontFamily: {
-                        'inter': ['Inter', 'sans-serif'],
-                    },
-                    animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'glow': 'glow 2s ease-in-out infinite alternate',
-                        'slide-up': 'slideUp 0.5s ease-out',
-                        'bounce-in': 'bounceIn 0.6s ease-out',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-20px)' },
-                        },
-                        glow: {
-                            '0%': { boxShadow: '0 0 20px #00d9ff' },
-                            '100%': { boxShadow: '0 0 30px #00d9ff, 0 0 40px #00d9ff' },
-                        },
-                        slideUp: {
-                            '0%': { opacity: '0', transform: 'translateY(30px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        },
-                        bounceIn: {
-                            '0%': { opacity: '0', transform: 'scale(0.3)' },
-                            '50%': { opacity: '1', transform: 'scale(1.05)' },
-                            '70%': { transform: 'scale(0.9)' },
-                            '100%': { opacity: '1', transform: 'scale(1)' },
-                        },
-                    },
-                }
-            }
-        }
-    </script>
-
-    <link rel="stylesheet" href="css/style.css">
+    <!-- Link to External CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="bg-gradient-to-br from-navy via-navy-light to-navy-lighter text-white font-inter min-h-screen">
-    <nav class="sticky top-0 z-50 glass-morphism">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 ai-gradient rounded-lg flex items-center justify-center animate-glow">
-                        <svg class="w-6 h-6 text-navy" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
-                        </svg>
-                    </div>
-                    <h1 class="text-xl font-bold bg-gradient-to-r from-accent to-lime-bright bg-clip-text text-transparent">
-                        AI Calculator
-                    </h1>
-                </div>
-
-                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg glass-morphism hover-lift">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+<body>
+    <!-- Navigation Header -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo-section">
+                <div class="logo">
+                    <svg fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
                     </svg>
-                </button>
-
-                <div class="hidden md:flex space-x-6">
-                    <a href="#home" class="hover:text-accent transition-colors">Home</a>
-                    <a href="#ai-calculator" class="hover:text-accent transition-colors">AI Calculator</a>
-                    <a href="#traditional" class="hover:text-accent transition-colors">Basic Tools</a>
-                    <a href="#advanced" class="hover:text-accent transition-colors">Advanced</a>
-                    <a href="#about" class="hover:text-accent transition-colors">About</a>
                 </div>
+                <h1 class="brand-name">AI Calculator</h1>
             </div>
-
-            <div id="mobile-menu" class="md:hidden mt-4 space-y-2 hidden">
-                <a href="#home" class="block py-2 px-4 rounded hover:bg-white hover:bg-opacity-10 transition-colors">Home</a>
-                <a href="#ai-calculator" class="block py-2 px-4 rounded hover:bg-white hover:bg-opacity-10 transition-colors">AI Calculator</a>
-                <a href="#traditional" class="block py-2 px-4 rounded hover:bg-white hover:bg-opacity-10 transition-colors">Basic Tools</a>
-                <a href="#advanced" class="block py-2 px-4 rounded hover:bg-white hover:bg-opacity-10 transition-colors">Advanced</a>
-                <a href="#about" class="block py-2 px-4 rounded hover:bg-white hover:bg-opacity-10 transition-colors">About</a>
+            
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="mobile-menu-btn">
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+            
+            <!-- Desktop Navigation -->
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#ai-calculator" class="nav-link">AI Calculator</a></li>
+                <li><a href="#traditional" class="nav-link">Basic Tools</a></li>
+                <li><a href="#advanced" class="nav-link">Advanced</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+            </ul>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="mobile-menu">
+                <a href="#home">Home</a>
+                <a href="#ai-calculator">AI Calculator</a>
+                <a href="#traditional">Basic Tools</a>
+                <a href="#advanced">Advanced</a>
+                <a href="#about">About</a>
             </div>
         </div>
     </nav>
 
     <main>
-        <section id="home" class="relative py-20 overflow-hidden hero-3d">
-            <div class="floating-shape top-20 left-10 w-20 h-20 bg-accent rounded-full" style="animation-delay: 0s;"></div>
-            <div class="floating-shape top-40 right-20 w-16 h-16 bg-lime-bright rounded-full" style="animation-delay: 2s;"></div>
-            <div class="floating-shape bottom-20 left-1/4 w-12 h-12 bg-cyan-bright rounded-full" style="animation-delay: 4s;"></div>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <!-- Floating Background Shapes -->
+            <div class="floating-shape"></div>
+            <div class="floating-shape"></div>
+            <div class="floating-shape"></div>
+            
+            <div class="container">
+                <h1 class="hero-title">AI Calculator: The Future of Calculations</h1>
+                <p class="hero-subtitle">
+                    Experience the power of artificial intelligence in calculations. Ask questions in natural language and get instant, accurate results.
+                </p>
+                <a href="#ai-calculator" class="cta-button">Try AI Calculator Now</a>
+            </div>
+        </section>
 
-            <div class="container mx-auto px-6 text-center relative z-10">
-                <div class="animate-slide-up">
-                    <h1 class="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-accent to-lime-bright bg-clip-text text-transparent leading-tight">
-                        AI Calculator: The Future of Calculations
-                    </h1>
-                    <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto">
-                        Experience the power of artificial intelligence in calculations. Ask questions in natural language and get instant, accurate results.
-                    </p>
-                    <button onclick="scrollToSection('ai-calculator')" class="ai-gradient text-navy font-bold py-4 px-8 rounded-xl text-lg hover-lift button-click animate-bounce-in">
-                        Try AI Calculator Now
-                    </button>
-                </div>
-
-                <div class="mt-16 animate-float">
-                    <div class="w-64 h-64 mx-auto relative">
-                        <div class="absolute inset-0 ai-gradient rounded-full opacity-20 animate-pulse"></div>
-                        <div class="absolute inset-4 glass-morphism rounded-full flex items-center justify-center">
-                            <svg class="w-32 h-32 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+        <!-- AI Calculator Section -->
+        <section id="ai-calculator">
+            <div class="container">
+                <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 2rem; background: linear-gradient(135deg, #00d9ff 0%, #00ff00 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">AI-Powered Calculator</h2>
+                
+                <div class="calculator-grid">
+                    <!-- Calculator Selection Cards -->
+                    <div class="calculator-card active" data-calculator="ai">
+                        <div class="card-icon">
+                            <svg fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                             </svg>
                         </div>
+                        <h3 class="card-title">AI Calculator</h3>
+                        <p class="card-description">Ask questions in plain English and get instant mathematical solutions with step-by-step explanations.</p>
+                    </div>
+                    
+                    <div class="calculator-card" data-calculator="scientific">
+                        <div class="card-icon">
+                            <svg fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+                            </svg>
+                        </div>
+                        <h3 class="card-title">Scientific Calculator</h3>
+                        <p class="card-description">Full-featured scientific calculator with advanced mathematical functions and operations.</p>
+                    </div>
+                    
+                    <div class="calculator-card" data-calculator="bmi">
+                        <div class="card-icon">
+                            <svg fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-6v13h-2v-6h-2v6H9V9H3V7h18v2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="card-title">BMI Calculator</h3>
+                        <p class="card-description">Calculate your Body Mass Index and understand your health category with detailed insights.</p>
+                    </div>
+                    
+                    <div class="calculator-card" data-calculator="loan">
+                        <div class="card-icon">
+                            <svg fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/>
+                            </svg>
+                        </div>
+                        <h3 class="card-title">Loan EMI Calculator</h3>
+                        <p class="card-description">Calculate monthly loan payments with detailed breakdown of principal and interest.</p>
+                    </div>
+                    
+                    <div class="calculator-card" data-calculator="mortgage">
+                        <div class="card-icon">
+                            <svg fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                            </svg>
+                        </div>
+                        <h3 class="card-title">Mortgage Calculator</h3>
+                        <p class="card-description">Comprehensive mortgage calculator including taxes, insurance, and PMI calculations.</p>
+                    </div>
+                    
+                    <div class="calculator-card" data-calculator="investment">
+                        <div class="card-icon">
+                            <svg fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/>
+                            </svg>
+                        </div>
+                        <h3 class="card-title">Investment Calculator</h3>
+                        <p class="card-description">Calculate compound interest and investment growth with regular contributions.</p>
+                    </div>
+                    
+                    <div class="calculator-card" data-calculator="tax">
+                        <div class="card-icon">
+                            <svg fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M14 6V4h-4v2h4zM4 8v11h16V8H4zm16-2c1.11 0 2 .89 2 2v11c0 1.11-.89 2-2 2H4c-1.11 0-2-.89-2-2l.01-11c0-1.11.88-2 1.99-2h4V4c0-1.11.89-2 2-2h4c1.11 0 2 .89 2 2v2h4z"/>
+                            </svg>
+                        </div>
+                        <h3 class="card-title">Tax Calculator</h3>
+                        <p class="card-description">Calculate federal and state taxes with multiple filing status options.</p>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <section id="ai-calculator" class="py-20 bg-gradient-to-r from-navy-light to-navy">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-12">
-                    <h2 class="text-4xl font-bold mb-4 bg-gradient-to-r from-accent to-lime-bright bg-clip-text text-transparent">
-                        AI-Powered Calculator
-                    </h2>
-                    <p class="text-xl text-gray-300 max-w-3xl mx-auto">
-                        Simply type your question in natural language. Our AI understands complex mathematical problems and provides step-by-step solutions.
-                    </p>
-                </div>
-
-                <div class="max-w-4xl mx-auto">
-                    <div class="glass-morphism rounded-2xl p-8 hover-lift">
-                        <div class="mb-6">
-                            <label for="ai-input" class="block text-lg font-semibold mb-3 text-accent">
-                                Ask me anything about math:
-                            </label>
-                            <div class="relative">
-                                <textarea
-                                    id="ai-input"
-                                    placeholder="e.g., 'What is 15% of 250?' or 'Calculate the compound interest on $5000 at 3% for 5 years'"
-                                    class="w-full p-4 bg-navy border border-gray-600 rounded-xl text-white placeholder-gray-400 focus:border-accent focus:outline-none resize-none h-24 text-lg"
-                                ></textarea>
-                                <button onclick="processAIQuery()" class="absolute bottom-4 right-4 ai-gradient text-navy p-2 rounded-lg hover-lift button-click">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="mb-6">
-                            <p class="text-sm text-gray-400 mb-3">Try these examples:</p>
-                            <div class="flex flex-wrap gap-2">
-                                <button onclick="setAIQuery('Calculate 25% of 480')" class="text-sm bg-navy-lighter hover:bg-navy px-3 py-1 rounded-full hover-lift button-click transition-colors">
-                                    Calculate 25% of 480
-                                </button>
-                                <button onclick="setAIQuery('What is the square root of 144?')" class="text-sm bg-navy-lighter hover:bg-navy px-3 py-1 rounded-full hover-lift button-click transition-colors">
-                                    Square root of 144
-                                </button>
-                                <button onclick="setAIQuery('Convert 75 degrees Fahrenheit to Celsius')" class="text-sm bg-navy-lighter hover:bg-navy px-3 py-1 rounded-full hover-lift button-click transition-colors">
-                                    Convert 75°F to Celsius
-                                </button>
-                            </div>
-                        </div>
-
-                        <div id="ai-results" class="bg-navy rounded-xl p-6 border border-gray-600 min-h-24 hidden">
-                            <div class="flex items-start space-x-3">
-                                <div class="w-8 h-8 ai-gradient rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                                    <svg class="w-4 h-4 text-navy" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                    </svg>
-                                </div>
-                                <div class="flex-1">
-                                    <h4 class="font-semibold text-accent mb-2">AI Solution:</h4>
-                                    <div id="ai-answer" class="text-lg calc-display"></div>
-                                    <div id="ai-explanation" class="text-gray-300 mt-3 text-sm"></div>
-                                </div>
-                            </div>
-                        </div>
+                
+                <!-- Calculator Interfaces -->
+                
+                <!-- AI Calculator Interface -->
+                <div id="ai-interface" class="calculator-interface active">
+                    <div style="background: rgba(255,255,255,0.1); border-radius: 16px; padding: 2rem; margin-top: 2rem;">
+                        <h3 style="margin-bottom: 1rem; color: #00d9ff;">Ask me anything about calculations!</h3>
+                        <textarea id="ai-question" class="ai-input" placeholder="Example: What is 15% of 250? or Calculate BMI for height 170cm and weight 70kg"></textarea>
+                        <button onclick="askAI()" class="form-button">Calculate with AI</button>
+                        <div id="ai-response"></div>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <section id="traditional" class="py-20">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-12">
-                    <h2 class="text-4xl font-bold mb-4 bg-gradient-to-r from-accent to-lime-bright bg-clip-text text-transparent">
-                        Traditional Calculators
-                    </h2>
-                    <p class="text-xl text-gray-300">
-                        Quick access to specialized calculation tools for everyday needs
-                    </p>
-                </div>
-
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                    <div class="glass-morphism rounded-2xl p-6 hover-lift">
-                        <h3 class="text-2xl font-bold mb-4 text-accent">Scientific Calculator</h3>
-                        <div class="bg-navy rounded-xl p-4 mb-4">
-                            <div id="sci-display" class="calc-display text-right text-2xl font-mono bg-black rounded p-3 mb-4 min-h-16 flex items-center justify-end">0</div>
-                            <div class="grid grid-cols-4 gap-2">
-                                <button data-calc-type="sci" data-value="C" class="bg-red-600 hover:bg-red-700 p-3 rounded font-semibold button-click calc-clear">C</button>
-                                <button data-calc-type="sci" data-value="/" class="bg-orange-600 hover:bg-orange-700 p-3 rounded font-semibold button-click calc-append">÷</button>
-                                <button data-calc-type="sci" data-value="*" class="bg-orange-600 hover:bg-orange-700 p-3 rounded font-semibold button-click calc-append">×</button>
-                                <button data-calc-type="sci" data-value="DEL" class="bg-gray-600 hover:bg-gray-700 p-3 rounded font-semibold button-click calc-delete">⌫</button>
-
-                                <button data-calc-type="sci" data-value="7" class="bg-gray-700 hover:bg-gray-600 p-3 rounded font-semibold button-click calc-append">7</button>
-                                <button data-calc-type="sci" data-value="8" class="bg-gray-700 hover:bg-gray-600 p-3 rounded font-semibold button-click calc-append">8</button>
-                                <button data-calc-type="sci" data-value="9" class="bg-gray-700 hover:bg-gray-600 p-3 rounded font-semibold button-click calc-append">9</button>
-                                <button data-calc-type="sci" data-value="-" class="bg-orange-600 hover:bg-orange-700 p-3 rounded font-semibold button-click calc-append">−</button>
-
-                                <button data-calc-type="sci" data-value="4" class="bg-gray-700 hover:bg-gray-600 p-3 rounded font-semibold button-click calc-append">4</button>
-                                <button data-calc-type="sci" data-value="5" class="bg-gray-700 hover:bg-gray-600 p-3 rounded font-semibold button-click calc-append">5</button>
-                                <button data-calc-type="sci" data-value="6" class="bg-gray-700 hover:bg-gray-600 p-3 rounded font-semibold button-click calc-append">6</button>
-                                <button data-calc-type="sci" data-value="+" class="bg-orange-600 hover:bg-orange-700 p-3 rounded font-semibold button-click calc-append">+</button>
-
-                                <button data-calc-type="sci" data-value="1" class="bg-gray-700 hover:bg-gray-600 p-3 rounded font-semibold button-click calc-append">1</button>
-                                <button data-calc-type="sci" data-value="2" class="bg-gray-700 hover:bg-gray-600 p-3 rounded font-semibold button-click calc-append">2</button>
-                                <button data-calc-type="sci" data-value="3" class="bg-gray-700 hover:bg-gray-600 p-3 rounded font-semibold button-click calc-append">3</button>
-                                <button data-calc-type="sci" data-value="=" class="bg-green-600 hover:bg-green-700 p-3 rounded font-semibold button-click row-span-2 calc-calculate">=</button>
-
-                                <button data-calc-type="sci" data-value="0" class="bg-gray-700 hover:bg-gray-600 p-3 rounded font-semibold button-click col-span-2 calc-append">0</button>
-                                <button data-calc-type="sci" data-value="." class="bg-gray-700 hover:bg-gray-600 p-3 rounded font-semibold button-click calc-append">.</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="glass-morphism rounded-2xl p-6 hover-lift">
-                        <h3 class="text-2xl font-bold mb-4 text-accent">BMI Calculator</h3>
-                        <div class="space-y-4">
-                            <div>
-                                <label for="height" class="block text-sm font-medium mb-2">Height (cm)</label>
-                                <input id="height" type="number" placeholder="170" class="w-full p-3 bg-navy border border-gray-600 rounded-lg text-white focus:border-accent focus:outline-none">
-                            </div>
-                            <div>
-                                <label for="weight" class="block text-sm font-medium mb-2">Weight (kg)</label>
-                                <input id="weight" type="number" placeholder="70" class="w-full p-3 bg-navy border border-gray-600 rounded-lg text-white focus:border-accent focus:outline-none">
-                            </div>
-                            <button id="calculate-bmi-btn" class="w-full ai-gradient text-navy font-bold py-3 rounded-lg hover-lift button-click">
-                                Calculate BMI
-                            </button>
-                            <div id="bmi-result" class="bg-navy rounded-lg p-4 text-center hidden">
-                                <div id="bmi-value" class="text-2xl font-bold text-accent mb-2"></div>
-                                <div id="bmi-category" class="text-lg"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="glass-morphism rounded-2xl p-6 hover-lift">
-                        <h3 class="text-2xl font-bold mb-4 text-accent">Loan EMI Calculator</h3>
-                        <div class="space-y-4">
-                            <div>
-                                <label for="loan-amount" class="block text-sm font-medium mb-2">Loan Amount ($)</label>
-                                <input id="loan-amount" type="number" placeholder="100000" class="w-full p-3 bg-navy border border-gray-600 rounded-lg text-white focus:border-accent focus:outline-none">
-                            </div>
-                            <div>
-                                <label for="interest-rate" class="block text-sm font-medium mb-2">Interest Rate (%)</label>
-                                <input id="interest-rate" type="number" step="0.1" placeholder="5.5" class="w-full p-3 bg-navy border border-gray-600 rounded-lg text-white focus:border-accent focus:outline-none">
-                            </div>
-                            <div>
-                                <label for="loan-term" class="block text-sm font-medium mb-2">Loan Term (years)</label>
-                                <input id="loan-term" type="number" placeholder="30" class="w-full p-3 bg-navy border border-gray-600 rounded-lg text-white focus:border-accent focus:outline-none">
-                            </div>
-                            <button id="calculate-emi-btn" class="w-full ai-gradient text-navy font-bold py-3 rounded-lg hover-lift button-click">
-                                Calculate EMI
-                            </button>
-                            <div id="emi-result" class="bg-navy rounded-lg p-4 hidden">
-                                <div class="text-center">
-                                    <div class="text-lg text-gray-300">Monthly EMI</div>
-                                    <div id="emi-value" class="text-3xl font-bold text-accent"></div>
-                                </div>
-                                <div class="mt-4 space-y-2 text-sm">
-                                    <div class="flex justify-between">
-                                        <span>Total Interest:</span>
-                                        <span id="total-interest" class="text-lime-bright"></span>
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <span>Total Amount:</span>
-                                        <span id="total-amount" class="text-lime-bright"></span>
-                                    </div>
-                                </div>
-                            </div>
+                
+                <!-- Scientific Calculator Interface -->
+                <div id="scientific-interface" class="calculator-interface">
+                    <div style="background: rgba(255,255,255,0.1); border-radius: 16px; padding: 2rem; margin-top: 2rem;">
+                        <div id="calc-display" class="calc-display">0</div>
+                        <div class="calc-buttons">
+                            <button class="calc-button">C</button>
+                            <button class="calc-button">±</button>
+                            <button class="calc-button">%</button>
+                            <button class="calc-button operator">÷</button>
+                            <button class="calc-button">7</button>
+                            <button class="calc-button">8</button>
+                            <button class="calc-button">9</button>
+                            <button class="calc-button operator">×</button>
+                            <button class="calc-button">4</button>
+                            <button class="calc-button">5</button>
+                            <button class="calc-button">6</button>
+                            <button class="calc-button operator">-</button>
+                            <button class="calc-button">1</button>
+                            <button class="calc-button">2</button>
+                            <button class="calc-button">3</button>
+                            <button class="calc-button operator">+</button>
+                            <button class="calc-button" style="grid-column: span 2;">0</button>
+                            <button class="calc-button">.</button>
+                            <button class="calc-button operator">=</button>
                         </div>
                     </div>
                 </div>
-
-            </div>
-        </section>
-
-        <section id="advanced" class="py-20 bg-gradient-to-r from-navy to-navy-light">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-12">
-                    <h2 class="text-4xl font-bold mb-4 bg-gradient-to-r from-accent to-lime-bright bg-clip-text text-transparent">
-                        Advanced Calculators
-                    </h2>
-                    <p class="text-xl text-gray-300">
-                        Professional-grade calculation tools for complex financial and mathematical analysis
-                    </p>
-                </div>
-
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                    <div class="glass-morphism rounded-2xl p-6 hover-lift">
-                        <h3 class="text-2xl font-bold mb-4 text-accent">Mortgage Calculator</h3>
-                        <div class="space-y-4">
-                            <div>
-                                <label for="home-price" class="block text-sm font-medium mb-2">Home Price ($)</label>
-                                <input id="home-price" type="number" placeholder="500000" class="w-full p-3 bg-navy border border-gray-600 rounded-lg text-white focus:border-accent focus:outline-none">
-                            </div>
-                            <div>
-                                <label for="down-payment" class="block text-sm font-medium mb-2">Down Payment ($)</label>
-                                <input id="down-payment" type="number" placeholder="100000" class="w-full p-3 bg-navy border border-gray-600 rounded-lg text-white focus:border-accent focus:outline-none">
-                            </div>
-                            <div>
-                                <label for="mortgage-rate" class="block text-sm font-medium mb-2">Interest Rate (%)</label>
-                                <input id="mortgage-rate" type="number" step="0.01" placeholder="6.5" class="w-full p-3 bg-navy border border-gray-600 rounded-lg text-white focus:border-accent focus:outline-none">
-                            </div>
-                            <div>
-                                <label for="mortgage-term" class="block text-sm font-medium mb-2">Loan Term (years)</label>
-                                <select id="mortgage-term" class="w-full p-3 bg-navy border border-gray-600 rounded-lg text-white focus:border-accent focus:outline-none">
-                                    <option value="15">15 years</option>
-                                    <option value="30" selected>30 years</option>
+                
+                <!-- BMI Calculator Interface -->
+                <div id="bmi-interface" class="calculator-interface">
+                    <div style="background: rgba(255,255,255,0.1); border-radius: 16px; padding: 2rem; margin-top: 2rem;">
+                        <form id="bmi-form">
+                            <div class="form-group">
+                                <label class="form-label">Unit System:</label>
+                                <select id="unit" class="form-select">
+                                    <option value="metric">Metric (cm, kg)</option>
+                                    <option value="imperial">Imperial (inches, lbs)</option>
                                 </select>
                             </div>
-                            <div>
-                                <label for="property-tax" class="block text-sm font-medium mb-2">Property Tax ($/year)</label>
-                                <input id="property-tax" type="number" placeholder="6000" class="w-full p-3 bg-navy border border-gray-600 rounded-lg text-white focus:border-accent focus:outline-none">
+                            <div class="form-group">
+                                <label class="form-label">Height:</label>
+                                <input type="number" id="height" class="form-input" placeholder="Enter height" required>
                             </div>
-                            <div>
-                                <label for="insurance" class="block text-sm font-medium mb-2">Insurance ($/year)</label>
-                                <input id="insurance" type="number" placeholder="1200" class="w-full p-3 bg-navy border border-gray-600 rounded-lg text-white focus:border-accent focus:outline-none">
+                            <div class="form-group">
+                                <label class="form-label">Weight:</label>
+                                <input type="number" id="weight" class="form-input" placeholder="Enter weight" required>
                             </div>
-                            <button id="calculate-mortgage-btn" class="w-full ai-gradient text-navy font-bold py-3 rounded-lg hover-lift button-click">
-                                Calculate Mortgage
-                            </button>
-                            <div id="mortgage-result" class="bg-navy rounded-lg p-4 hidden">
-                                <div class="space-y-3">
-                                    <div class="text-center">
-                                        <div class="text-lg text-gray-300">Monthly Payment</div>
-                                        <div id="mortgage-payment" class="text-3xl font-bold text-accent"></div>
-                                    </div>
-                                    <div class="space-y-2 text-sm">
-                                        <div class="flex justify-between">
-                                            <span>Principal & Interest:</span>
-                                            <span id="principal-interest" class="text-lime-bright"></span>
-                                        </div>
-                                        <div class="flex justify-between">
-                                            <span>Property Tax:</span>
-                                            <span id="monthly-tax" class="text-lime-bright"></span>
-                                        </div>
-                                        <div class="flex justify-between">
-                                            <span>Insurance:</span>
-                                            <span id="monthly-insurance" class="text-lime-bright"></span>
-                                        </div>
-                                        <div class="flex justify-between font-semibold">
-                                            <span>Total Interest:</span>
-                                            <span id="mortgage-total-interest" class="text-accent"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                            <button type="submit" class="form-button">Calculate BMI</button>
+                        </form>
+                        <div id="bmi-result"></div>
                     </div>
-
-                    <div class="glass-morphism rounded-2xl p-6 hover-lift">
-                        <h3 class="text-2xl font-bold mb-4 text-accent">Investment Calculator</h3>
-                        <div class="space-y-4">
-                            <div>
-                                <label for="initial-investment" class="block text-sm font-medium mb-2">Initial Investment ($)</label>
-                                <input id="initial-investment" type="number" placeholder="10000" class="w-full p-3 bg-navy border border-gray-600 rounded-lg text-white focus:border-accent focus:outline-none">
+                </div>
+                
+                <!-- Loan EMI Calculator Interface -->
+                <div id="loan-interface" class="calculator-interface">
+                    <div style="background: rgba(255,255,255,0.1); border-radius: 16px; padding: 2rem; margin-top: 2rem;">
+                        <form id="loan-form">
+                            <div class="form-group">
+                                <label class="form-label">Loan Amount ($):</label>
+                                <input type="number" id="loan-amount" class="form-input" placeholder="Enter loan amount" required>
                             </div>
-                            <div>
-                                <label for="monthly-contribution" class="block text-sm font-medium mb-2">Monthly Contribution ($)</label>
-                                <input id="monthly-contribution" type="number" placeholder="500" class="w-full p-3 bg-navy border border-gray-600 rounded-lg text-white focus:border-accent focus:outline-none">
+                            <div class="form-group">
+                                <label class="form-label">Interest Rate (% per year):</label>
+                                <input type="number" id="interest-rate" class="form-input" step="0.01" placeholder="Enter interest rate" required>
                             </div>
-                            <div>
-                                <label for="annual-return" class="block text-sm font-medium mb-2">Annual Return (%)</label>
-                                <input id="annual-return" type="number" step="0.1" placeholder="7" class="w-full p-3 bg-navy border border-gray-600 rounded-lg text-white focus:border-accent focus:outline-none">
+                            <div class="form-group">
+                                <label class="form-label">Loan Tenure (years):</label>
+                                <input type="number" id="loan-tenure" class="form-input" placeholder="Enter tenure in years" required>
                             </div>
-                            <div>
-                                <label for="investment-years" class="block text-sm font-medium mb-2">Investment Period (years)</label>
-                                <input id="investment-years" type="number" placeholder="20" class="w-full p-3 bg-navy border border-gray-600 rounded-lg text-white focus:border-accent focus:outline-none">
-                            </div>
-                            <div>
-                                <label for="compound-frequency" class="block text-sm font-medium mb-2">Compound Frequency</label>
-                                <select id="compound-frequency" class="w-full p-3 bg-navy border border-gray-600 rounded-lg text-white focus:border-accent focus:outline-none">
-                                    <option value="1">Annually</option>
-                                    <option value="4">Quarterly</option>
-                                    <option value="12" selected>Monthly</option>
-                                    <option value="365">Daily</option>
-                                </select>
-                            </div>
-                            <button id="calculate-investment-btn" class="w-full ai-gradient text-navy font-bold py-3 rounded-lg hover-lift button-click">
-                                Calculate Investment
-                            </button>
-                            <div id="investment-result" class="bg-navy rounded-lg p-4 hidden">
-                                <div class="space-y-3">
-                                    <div class="text-center">
-                                        <div class="text-lg text-gray-300">Final Value</div>
-                                        <div id="investment-final" class="text-3xl font-bold text-accent"></div>
-                                    </div>
-                                    <div class="space-y-2 text-sm">
-                                        <div class="flex justify-between">
-                                            <span>Total Invested:</span>
-                                            <span id="total-invested" class="text-lime-bright"></span>
-                                        </div>
-                                        <div class="flex justify-between">
-                                            <span>Total Gains:</span>
-                                            <span id="total-gains" class="text-lime-bright"></span>
-                                        </div>
-                                        <div class="flex justify-between font-semibold">
-                                            <span>ROI:</span>
-                                            <span id="roi-percentage" class="text-accent"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                            <button type="submit" class="form-button">Calculate EMI</button>
+                        </form>
+                        <div id="loan-result"></div>
                     </div>
-
-                    <div class="glass-morphism rounded-2xl p-6 hover-lift">
-                        <h3 class="text-2xl font-bold mb-4 text-accent">Tax Calculator</h3>
-                        <div class="space-y-4">
-                            <div>
-                                <label for="annual-income" class="block text-sm font-medium mb-2">Annual Income ($)</label>
-                                <input id="annual-income" type="number" placeholder="75000" class="w-full p-3 bg-navy border border-gray-600 rounded-lg text-white focus:border-accent focus:outline-none">
+                </div>
+                
+                <!-- Mortgage Calculator Interface -->
+                <div id="mortgage-interface" class="calculator-interface">
+                    <div style="background: rgba(255,255,255,0.1); border-radius: 16px; padding: 2rem; margin-top: 2rem;">
+                        <form id="mortgage-form">
+                            <div class="form-group">
+                                <label class="form-label">Home Price ($):</label>
+                                <input type="number" id="home-price" class="form-input" placeholder="Enter home price" required>
                             </div>
-                            <div>
-                                <label for="filing-status" class="block text-sm font-medium mb-2">Filing Status</label>
-                                <select id="filing-status" class="w-full p-3 bg-navy border border-gray-600 rounded-lg text-white focus:border-accent focus:outline-none">
+                            <div class="form-group">
+                                <label class="form-label">Down Payment ($):</label>
+                                <input type="number" id="down-payment" class="form-input" placeholder="Enter down payment" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Loan Term (years):</label>
+                                <input type="number" id="loan-term" class="form-input" placeholder="Enter loan term" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Interest Rate (% per year):</label>
+                                <input type="number" id="mortgage-rate" class="form-input" step="0.01" placeholder="Enter interest rate" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Annual Property Tax ($):</label>
+                                <input type="number" id="property-tax" class="form-input" placeholder="Enter property tax (optional)">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Annual Home Insurance ($):</label>
+                                <input type="number" id="home-insurance" class="form-input" placeholder="Enter insurance (optional)">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Annual PMI ($):</label>
+                                <input type="number" id="pmi" class="form-input" placeholder="Enter PMI (optional)">
+                            </div>
+                            <button type="submit" class="form-button">Calculate Mortgage</button>
+                        </form>
+                        <div id="mortgage-result"></div>
+                    </div>
+                </div>
+                
+                <!-- Investment Calculator Interface -->
+                <div id="investment-interface" class="calculator-interface">
+                    <div style="background: rgba(255,255,255,0.1); border-radius: 16px; padding: 2rem; margin-top: 2rem;">
+                        <form id="investment-form">
+                            <div class="form-group">
+                                <label class="form-label">Initial Investment ($):</label>
+                                <input type="number" id="initial-investment" class="form-input" placeholder="Enter initial amount" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Monthly Contribution ($):</label>
+                                <input type="number" id="monthly-contribution" class="form-input" placeholder="Enter monthly contribution (optional)">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Annual Return Rate (%):</label>
+                                <input type="number" id="annual-return" class="form-input" step="0.01" placeholder="Enter expected return rate" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Investment Period (years):</label>
+                                <input type="number" id="investment-years" class="form-input" placeholder="Enter investment period" required>
+                            </div>
+                            <button type="submit" class="form-button">Calculate Investment</button>
+                        </form>
+                        <div id="investment-result"></div>
+                    </div>
+                </div>
+                
+                <!-- Tax Calculator Interface -->
+                <div id="tax-interface" class="calculator-interface">
+                    <div style="background: rgba(255,255,255,0.1); border-radius: 16px; padding: 2rem; margin-top: 2rem;">
+                        <form id="tax-form">
+                            <div class="form-group">
+                                <label class="form-label">Annual Income ($):</label>
+                                <input type="number" id="annual-income" class="form-input" placeholder="Enter annual income" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Filing Status:</label>
+                                <select id="filing-status" class="form-select">
                                     <option value="single">Single</option>
-                                    <option value="married-joint">Married Filing Jointly</option>
-                                    <option value="married-separate">Married Filing Separately</option>
-                                    <option value="head">Head of Household</option>
+                                    <option value="married">Married Filing Jointly</option>
                                 </select>
                             </div>
-                            <div>
-                                <label for="deductions" class="block text-sm font-medium mb-2">Standard Deduction</label>
-                                <input id="deductions" type="number" placeholder="13850" class="w-full p-3 bg-navy border border-gray-600 rounded-lg text-white focus:border-accent focus:outline-none">
-                            </div>
-                            <div>
-                                <label for="state-tax-rate" class="block text-sm font-medium mb-2">State Tax Rate (%)</label>
-                                <input id="state-tax-rate" type="number" step="0.1" placeholder="5" class="w-full p-3 bg-navy border border-gray-600 rounded-lg text-white focus:border-accent focus:outline-none">
-                            </div>
-                            <button id="calculate-tax-btn" class="w-full ai-gradient text-navy font-bold py-3 rounded-lg hover-lift button-click">
-                                Calculate Tax
-                            </button>
-                            <div id="tax-result" class="bg-navy rounded-lg p-4 hidden">
-                                <div class="space-y-3">
-                                    <div class="text-center">
-                                        <div class="text-lg text-gray-300">Total Tax Owed</div>
-                                        <div id="total-tax" class="text-3xl font-bold text-accent"></div>
-                                    </div>
-                                    <div class="space-y-2 text-sm">
-                                        <div class="flex justify-between">
-                                            <span>Taxable Income:</span>
-                                            <span id="taxable-income" class="text-lime-bright"></span>
-                                        </div>
-                                        <div class="flex justify-between">
-                                            <span>Federal Tax:</span>
-                                            <span id="federal-tax" class="text-lime-bright"></span>
-                                        </div>
-                                        <div class="flex justify-between">
-                                            <span>State Tax:</span>
-                                            <span id="state-tax" class="text-lime-bright"></span>
-                                        </div>
-                                        <div class="flex justify-between font-semibold">
-                                            <span>After-Tax Income:</span>
-                                            <span id="after-tax-income" class="text-accent"></span>
-                                        </div>
-                                        <div class="flex justify-between font-semibold">
-                                            <span>Effective Tax Rate:</span>
-                                            <span id="effective-tax-rate" class="text-accent"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="text-center mt-12">
-                    <div class="glass-morphism rounded-2xl p-8 max-w-2xl mx-auto">
-                        <h3 class="text-2xl font-bold mb-4 text-accent">More Advanced Tools Coming Soon</h3>
-                        <p class="text-gray-300 mb-6">We're constantly adding sophisticated calculation tools for professional use.</p>
-                        <div class="flex flex-wrap justify-center gap-4 text-sm">
-                            <span class="bg-navy-lighter px-3 py-1 rounded-full">Retirement Calculator</span>
-                            <span class="bg-navy-lighter px-3 py-1 rounded-full">Currency Converter</span>
-                            <span class="bg-navy-lighter px-3 py-1 rounded-full">Crypto Calculator</span>
-                            <span class="bg-navy-lighter px-3 py-1 rounded-full">Options Pricing</span>
-                            <span class="bg-navy-lighter px-3 py-1 rounded-full">Bond Calculator</span>
-                        </div>
+                            <button type="submit" class="form-button">Calculate Tax</button>
+                        </form>
+                        <div id="tax-result"></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="about" class="py-20 bg-gradient-to-r from-navy-light to-navy" role="contentinfo">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-4xl font-bold mb-8 bg-gradient-to-r from-accent to-lime-bright bg-clip-text text-transparent">
-                    About AI Calculator
-                </h2>
-                <div class="max-w-4xl mx-auto">
-                    <p class="text-xl text-gray-300 mb-8">
-                        AI Calculator represents the next generation of computational tools, combining the power of artificial intelligence with traditional mathematical precision. Our platform makes complex calculations accessible to everyone through natural language processing.
+        <!-- About Section -->
+        <section id="about">
+            <div class="container">
+                <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 2rem;">About AI Calculator</h2>
+                <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                    <p style="font-size: 1.125rem; line-height: 1.8; color: #cbd5e1; margin-bottom: 2rem;">
+                        AI Calculator represents the next generation of computational tools, combining artificial intelligence with traditional mathematical precision. Our platform offers a comprehensive suite of calculators designed for both personal and professional use.
                     </p>
+                    <p style="font-size: 1.125rem; line-height: 1.8; color: #cbd5e1;">
+                        From simple arithmetic to complex financial calculations, our AI-powered system understands natural language queries and provides detailed, step-by-step solutions. Whether you're calculating your BMI, planning investments, or solving scientific equations, AI Calculator delivers accurate results with an intuitive user experience.
+                    </p>
+                </div>
+            </div>
+        </section>
 
-                    <div class="mt-12 text-left max-w-3xl mx-auto">
-                        <h3 class="text-2xl font-bold mb-6 text-accent text-center">Frequently Asked Questions</h3>
-                        <div class="space-y-6">
-                            <div class="glass-morphism rounded-xl p-6">
-                                <h4 class="text-lg font-semibold mb-2 text-lime-bright">What makes AI Calculator different from other online calculators?</h4>
-                                <p class="text-gray-300">AI Calculator uses advanced natural language processing to understand questions in plain English, making it easier to perform complex calculations without learning specific syntax or formulas.</p>
-                            </div>
-                            <div class="glass-morphism rounded-xl p-6">
-                                <h4 class="text-lg font-semibold mb-2 text-lime-bright">Are all calculator tools completely free to use?</h4>
-                                <p class="text-gray-300">Yes, all our calculator tools including the AI calculator, scientific calculator, BMI calculator, mortgage calculator, investment calculator, and tax calculator are completely free with no registration required.</p>
-                            </div>
-                            <div class="glass-morphism rounded-xl p-6">
-                                <h4 class="text-lg font-semibold mb-2 text-lime-bright">Is the AI Calculator accurate for financial calculations?</h4>
-                                <p class="text-gray-300">Our calculators use industry-standard formulas and are designed for accuracy. However, for major financial decisions, we recommend consulting with qualified financial professionals.</p>
-                            </div>
+        <!-- FAQ Section -->
+        <section id="faq" style="padding: 5rem 0; background: rgba(0,0,0,0.2);">
+            <div class="container">
+                <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 3rem;">Frequently Asked Questions</h2>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How accurate is the AI Calculator?</span>
+                            <span>+</span>
+                        </div>
+                        <div class="faq-answer">
+                            Our AI Calculator uses advanced algorithms to ensure mathematical precision. All calculations are verified against standard mathematical principles and financial formulas used by professionals.
                         </div>
                     </div>
-
-                    <div class="grid md:grid-cols-3 gap-8 mt-12">
-                        <div class="glass-morphism rounded-xl p-6 hover-lift">
-                            <div class="w-16 h-16 ai-gradient rounded-full flex items-center justify-center mx-auto mb-4" role="img" aria-label="Accuracy icon">
-                                <svg class="w-8 h-8 text-navy" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                                </svg>
-                            </div>
-                            <h3 class="text-xl font-bold mb-3 text-accent">Accurate Results</h3>
-                            <p class="text-gray-300">
-                                Precision-engineered algorithms ensure reliable results for all your mathematical and financial calculations.
-                            </p>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Is the calculator free to use?</span>
+                            <span>+</span>
                         </div>
-                        <div class="glass-morphism rounded-xl p-6 hover-lift">
-                            <div class="w-16 h-16 ai-gradient rounded-full flex items-center justify-center mx-auto mb-4" role="img" aria-label="User-friendly icon">
-                                <svg class="w-8 h-8 text-navy" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                                    <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
-                                </svg>
-                            </div>
-                            <h3 class="text-xl font-bold mb-3 text-accent">User-Friendly Interface</h3>
-                            <p class="text-gray-300">
-                                Intuitive design makes complex calculations simple for users of all experience levels.
-                            </p>
+                        <div class="faq-answer">
+                            Yes, all calculator tools on our platform are completely free to use. There are no hidden fees, subscriptions, or limitations on usage.
                         </div>
-                        <div class="glass-morphism rounded-xl p-6 hover-lift">
-                            <div class="w-16 h-16 ai-gradient rounded-full flex items-center justify-center mx-auto mb-4" role="img" aria-label="Free service icon">
-                                <svg class="w-8 h-8 text-navy" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                                    <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
-                                </svg>
-                            </div>
-                            <h3 class="text-xl font-bold mb-3 text-accent">100% Free</h3>
-                            <p class="text-gray-300">
-                                All calculation tools are completely free to use with no registration, ads, or hidden charges.
-                            </p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Can I use this on mobile devices?</span>
+                            <span>+</span>
+                        </div>
+                        <div class="faq-answer">
+                            Absolutely! Our calculator is fully responsive and optimized for mobile devices, tablets, and desktop computers. You can access all features from any device with a web browser.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What types of calculations can the AI understand?</span>
+                            <span>+</span>
+                        </div>
+                        <div class="faq-answer">
+                            Our AI can process basic arithmetic, percentage calculations, unit conversions, BMI calculations, financial computations, and more. Simply ask in plain English like "What is 15% of 200?" or "Calculate mortgage for $300,000 loan."
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Do you store my calculation data?</span>
+                            <span>+</span>
+                        </div>
+                        <div class="faq-answer">
+                            No, we do not store any of your personal calculation data. All calculations are performed locally in your browser, ensuring complete privacy and security.
                         </div>
                     </div>
                 </div>
@@ -713,88 +537,54 @@
         </section>
     </main>
 
-    <footer class="bg-gradient-to-r from-navy to-navy-light py-12 mt-20" role="contentinfo">
-        <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-4 gap-8 mb-8">
-                <div class="md:col-span-2">
-                    <div class="flex items-center space-x-3 mb-4">
-                        <div class="w-10 h-10 ai-gradient rounded-lg flex items-center justify-center">
-                            <svg class="w-6 h-6 text-navy" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
-                            </svg>
-                        </div>
-                        <h3 class="text-2xl font-bold bg-gradient-to-r from-accent to-lime-bright bg-clip-text text-transparent">
-                            AI Calculator
-                        </h3>
-                    </div>
-                    <p class="text-gray-300 mb-4 max-w-md">
-                        The most advanced free online calculator suite with AI-powered natural language processing. Perform complex calculations with simple English questions.
-                    </p>
-                    <div class="text-sm text-gray-400">
-                        <p>★★★★★ Rated 4.8/5 by 150+ users</p>
-                        <p>100% Free • No Registration Required • Mobile Friendly</p>
-                    </div>
-                </div>
-
-                <div>
-                    <h4 class="text-lg font-semibold mb-4 text-accent">Calculator Tools</h4>
-                    <ul class="space-y-2 text-gray-300">
-                        <li><a href="#ai-calculator" class="hover:text-accent transition-colors">AI Calculator</a></li>
-                        <li><a href="#traditional" class="hover:text-accent transition-colors">Scientific Calculator</a></li>
-                        <li><a href="#traditional" class="hover:text-accent transition-colors">BMI Calculator</a></li>
-                        <li><a href="#advanced" class="hover:text-accent transition-colors">Mortgage Calculator</a></li>
-                        <li><a href="#advanced" class="hover:text-accent transition-colors">Investment Calculator</a></li>
-                        <li><a href="#advanced" class="hover:text-accent transition-colors">Tax Calculator</a></li>
-                        <li><a href="#traditional" class="hover:text-accent transition-colors">Loan EMI Calculator</a></li>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Calculator Tools</h3>
+                    <ul>
+                        <li><a href="#ai-calculator">AI Calculator</a></li>
+                        <li><a href="#scientific">Scientific Calculator</a></li>
+                        <li><a href="#bmi">BMI Calculator</a></li>
+                        <li><a href="#loan">Loan EMI Calculator</a></li>
                     </ul>
                 </div>
-
-                <div>
-                    <h4 class="text-lg font-semibold mb-4 text-accent">Quick Links</h4>
-                    <ul class="space-y-2 text-gray-300">
-                        <li><a href="#about" class="hover:text-accent transition-colors">About Us</a></li>
-                        <li><a href="#about" class="hover:text-accent transition-colors">FAQ</a></li>
-                        <li><a href="#home" class="hover:text-accent transition-colors">How to Use</a></li>
-                        <li><a href="#" class="hover:text-accent transition-colors">Privacy Policy</a></li>
-                        <li><a href="#" class="hover:text-accent transition-colors">Terms of Service</a></li>
-                        <li><a href="#" class="hover:text-accent transition-colors">Contact Support</a></li>
+                <div class="footer-section">
+                    <h3>Advanced Tools</h3>
+                    <ul>
+                        <li><a href="#mortgage">Mortgage Calculator</a></li>
+                        <li><a href="#investment">Investment Calculator</a></li>
+                        <li><a href="#tax">Tax Calculator</a></li>
+                        <li><a href="#percentage">Percentage Calculator</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#help">Help & Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Categories</h3>
+                    <ul>
+                        <li><a href="#financial">Financial Calculators</a></li>
+                        <li><a href="#health">Health Calculators</a></li>
+                        <li><a href="#math">Math Calculators</a></li>
+                        <li><a href="#conversion">Unit Converters</a></li>
                     </ul>
                 </div>
             </div>
-
-            <div class="border-t border-gray-600 pt-6 text-center">
-                <div class="mb-4 text-xs text-gray-500 max-w-4xl mx-auto">
-                    <p>Popular searches: free calculator, online calculator, ai calculator, scientific calculator, mortgage calculator, investment calculator, tax calculator, bmi calculator, loan emi calculator, financial calculator, math calculator, percentage calculator, compound interest calculator</p>
-                </div>
-
-                <div class="text-gray-400 text-sm">
-                    <p>&copy; 2025 AI Calculator. All rights reserved.</p>
-                    <p class="mt-2">Empowering calculations with artificial intelligence</p>
-                </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AI Calculator. Free online calculator tools with artificial intelligence.</p>
             </div>
         </div>
     </footer>
 
-    <div id="about" class="hidden">
-        <h2>About Us</h2>
-        <p>AI Calculator is a cutting-edge platform that combines the power of artificial intelligence with traditional calculation methods to provide accurate, fast, and intuitive mathematical solutions.</p>
-    </div>
-
-    <div id="faq" class="hidden">
-        <h2>Frequently Asked Questions</h2>
-        <p>Find answers to common questions about using our AI Calculator and traditional calculation tools.</p>
-    </div>
-
-    <div id="terms" class="hidden">
-        <h2>Terms and Conditions</h2>
-        <p>Please read these terms and conditions carefully before using our AI Calculator service.</p>
-    </div>
-
-    <div id="contact" class="hidden">
-        <h2>Contact Us</h2>
-        <p>Get in touch with our team for support, feedback, or business inquiries.</p>
-    </div>
-
-    <script src="js/script.js"></script>
+    <!-- Link to External JavaScript -->
+    <script src="script.js"></script>
 </body>
 </html>
