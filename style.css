@@ -1,0 +1,41 @@
+/* Custom Styles */
+.glass-morphism {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.hover-lift {
+    transition: all 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+.button-click {
+    transition: all 0.1s ease;
+}
+
+.button-click:active {
+    transform: scale(0.95);
+}
+
+.ai-gradient {
+    background: linear-gradient(135deg, #00d9ff 0%, #00ff00 100%);
+}
+
+.hero-3d {
+    perspective: 1000px;
+}
+
+.floating-shape {
+    position: absolute;
+    opacity: 0.1;
+    animation: float 8s ease-in-out infinite;
+}
+
+.calc-display {
+    font-family: 'Courier New', monospace;
+}
