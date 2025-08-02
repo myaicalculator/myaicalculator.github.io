@@ -245,6 +245,178 @@
         .calc-display {
             font-family: 'Courier New', monospace;
         }
+
+        /* Dropdown Styles */
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            border-radius: 0.5rem;
+            min-width: 250px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-item {
+            padding: 12px 16px;
+            color: #e2e8f0;
+            text-decoration: none;
+            display: block;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .dropdown-item:last-child {
+            border-bottom: none;
+        }
+        
+        .dropdown-item:hover {
+            background: rgba(0, 217, 255, 0.1);
+            color: #00d9ff;
+            transform: translateX(5px);
+        }
+
+        /* Sub-menu Styles */
+        .dropdown-submenu {
+            position: relative;
+        }
+        
+        .dropdown-submenu .submenu {
+            position: absolute;
+            top: 0;
+            left: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            border-radius: 0.5rem;
+            min-width: 220px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+            z-index: 1001;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .dropdown-submenu:hover .submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+        
+        .submenu-header {
+            padding: 12px 16px;
+            color: #00d9ff;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 217, 255, 0.05);
+        }
+        
+        .submenu-item {
+            padding: 10px 16px;
+            color: #cbd5e1;
+            text-decoration: none;
+            display: block;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 14px;
+        }
+        
+        .submenu-item:last-child {
+            border-bottom: none;
+        }
+        
+        .submenu-item:hover {
+            background: rgba(0, 217, 255, 0.1);
+            color: #00d9ff;
+            transform: translateX(5px);
+        }
+
+        /* Mobile dropdown styles */
+        .mobile-dropdown-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: rgba(30, 41, 59, 0.9);
+            border-left: 2px solid #00d9ff;
+            margin-left: 1rem;
+        }
+        
+        .mobile-dropdown-menu.active {
+            max-height: 400px;
+        }
+        
+        .mobile-dropdown-item {
+            padding: 8px 16px;
+            color: #94a3b8;
+            text-decoration: none;
+            display: block;
+            transition: all 0.2s ease;
+        }
+        
+        .mobile-dropdown-item:hover {
+            color: #00d9ff;
+            background: rgba(0, 217, 255, 0.1);
+        }
+
+        .mobile-submenu-header {
+            padding: 10px 16px;
+            color: #00d9ff;
+            font-weight: 600;
+            background: rgba(0, 217, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+        
+        .mobile-submenu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: rgba(20, 30, 50, 0.9);
+            border-left: 2px solid rgba(0, 217, 255, 0.3);
+            margin-left: 1rem;
+        }
+        
+        .mobile-submenu.active {
+            max-height: 300px;
+        }
+        
+        .mobile-submenu-item {
+            padding: 8px 20px;
+            color: #94a3b8;
+            text-decoration: none;
+            display: block;
+            transition: all 0.2s ease;
+            font-size: 14px;
+        }
+        
+        .mobile-submenu-item:hover {
+            color: #00d9ff;
+            background: rgba(0, 217, 255, 0.1);
+        }
     </style>
 </head>
 
@@ -275,20 +447,216 @@
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex space-x-6">
                     <a href="#home" class="hover:text-accent transition-colors">Home</a>
-                    <a href="#ai-calculator" class="hover:text-accent transition-colors">AI Calculator</a>
-                    <a href="#traditional" class="hover:text-accent transition-colors">Basic Tools</a>
-                    <a href="#advanced" class="hover:text-accent transition-colors">Advanced</a>
-                    <a href="#about" class="hover:text-accent transition-colors">About</a>
+                    
+                    <!-- AI Calculator Dropdown -->
+                    <div class="dropdown">
+                        <a href="#calculators" class="hover:text-accent transition-colors flex items-center space-x-1">
+                            <span>AI Calculator</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="#ai-calculator" class="dropdown-item">AI Calculator</a>
+                            
+                            <!-- Financial Calculators Submenu -->
+                            <div class="dropdown-submenu">
+                                <div class="submenu-header">
+                                    Financial Calculators
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </div>
+                                <div class="submenu">
+                                    <a href="#mortgage-calculator" class="submenu-item">Mortgage Calculator</a>
+                                    <a href="#investment-calculator" class="submenu-item">Investment Calculator</a>
+                                    <a href="#tax-calculator" class="submenu-item">Tax Calculator</a>
+                                    <a href="#loan-calculator" class="submenu-item">Loan EMI Calculator</a>
+                                    <a href="#compound-interest-calculator" class="submenu-item">Compound Interest</a>
+                                    <a href="#retirement-calculator" class="submenu-item">Retirement Planning</a>
+                                </div>
+                            </div>
+                            
+                            <!-- Fitness & Health Calculators Submenu -->
+                            <div class="dropdown-submenu">
+                                <div class="submenu-header">
+                                    Health & Fitness
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </div>
+                                <div class="submenu">
+                                    <a href="#bmi-calculator" class="submenu-item">BMI Calculator</a>
+                                    <a href="#calorie-calculator" class="submenu-item">Calorie Calculator</a>
+                                    <a href="#body-fat-calculator" class="submenu-item">Body Fat Calculator</a>
+                                    <a href="#water-intake-calculator" class="submenu-item">Water Intake</a>
+                                    <a href="#ideal-weight-calculator" class="submenu-item">Ideal Weight</a>
+                                </div>
+                            </div>
+                            
+                            <!-- Math Calculators Submenu -->
+                            <div class="dropdown-submenu">
+                                <div class="submenu-header">
+                                    Math Calculators
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </div>
+                                <div class="submenu">
+                                    <a href="#scientific-calculator" class="submenu-item">Scientific Calculator</a>
+                                    <a href="#graphing-calculator" class="submenu-item">Graphing Calculator</a>
+                                    <a href="#algebra-calculator" class="submenu-item">Algebra Calculator</a>
+                                    <a href="#geometry-calculator" class="submenu-item">Geometry Calculator</a>
+                                    <a href="#statistics-calculator" class="submenu-item">Statistics Calculator</a>
+                                </div>
+                            </div>
+                            
+                            <!-- Other Calculators Submenu -->
+                            <div class="dropdown-submenu">
+                                <div class="submenu-header">
+                                    Other Calculators
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </div>
+                                <div class="submenu">
+                                    <a href="#age-calculator" class="submenu-item">Age Calculator</a>
+                                    <a href="#date-calculator" class="submenu-item">Date Calculator</a>
+                                    <a href="#percentage-calculator" class="submenu-item">Percentage Calculator</a>
+                                    <a href="#tip-calculator" class="submenu-item">Tip Calculator</a>
+                                    <a href="#grade-calculator" class="submenu-item">Grade Calculator</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- AI Converters Dropdown -->
+                    <div class="dropdown">
+                        <a href="#converters" class="hover:text-accent transition-colors flex items-center space-x-1">
+                            <span>AI Converters</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="#unit-converter" class="dropdown-item">Unit Converter</a>
+                            <a href="#currency-converter" class="dropdown-item">Currency Converter</a>
+                            <a href="#temperature-converter" class="dropdown-item">Temperature Converter</a>
+                            <a href="#length-converter" class="dropdown-item">Length Converter</a>
+                            <a href="#weight-converter" class="dropdown-item">Weight Converter</a>
+                            <a href="#time-converter" class="dropdown-item">Time Converter</a>
+                        </div>
+                    </div>
+                    
+                    <a href="#about" class="hover:text-accent transition-colors">About Us</a>
                 </div>
             </div>
             
             <!-- Mobile Menu -->
             <div id="mobile-menu" class="md:hidden mt-4 space-y-2 hidden">
                 <a href="#home" class="block py-2 px-4 rounded hover:bg-white hover:bg-opacity-10 transition-colors">Home</a>
-                <a href="#ai-calculator" class="block py-2 px-4 rounded hover:bg-white hover:bg-opacity-10 transition-colors">AI Calculator</a>
-                <a href="#traditional" class="block py-2 px-4 rounded hover:bg-white hover:bg-opacity-10 transition-colors">Basic Tools</a>
-                <a href="#advanced" class="block py-2 px-4 rounded hover:bg-white hover:bg-opacity-10 transition-colors">Advanced</a>
-                <a href="#about" class="block py-2 px-4 rounded hover:bg-white hover:bg-opacity-10 transition-colors">About</a>
+                
+                <!-- Mobile AI Calculator Dropdown -->
+                <div>
+                    <button onclick="toggleMobileDropdown('calc-dropdown')" class="w-full text-left py-2 px-4 rounded hover:bg-white hover:bg-opacity-10 transition-colors flex items-center justify-between">
+                        <span>AI Calculator</span>
+                        <svg class="w-4 h-4 transform transition-transform" id="calc-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div id="calc-dropdown" class="mobile-dropdown-menu">
+                        <a href="#ai-calculator" class="mobile-dropdown-item">AI Calculator</a>
+                        
+                        <!-- Financial Calculators Mobile Submenu -->
+                        <div>
+                            <div onclick="toggleMobileSubmenu('financial-submenu')" class="mobile-submenu-header">
+                                <span>Financial Calculators</span>
+                                <svg class="w-4 h-4 transform transition-transform" id="financial-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </div>
+                            <div id="financial-submenu" class="mobile-submenu">
+                                <a href="#mortgage-calculator" class="mobile-submenu-item">Mortgage Calculator</a>
+                                <a href="#investment-calculator" class="mobile-submenu-item">Investment Calculator</a>
+                                <a href="#tax-calculator" class="mobile-submenu-item">Tax Calculator</a>
+                                <a href="#loan-calculator" class="mobile-submenu-item">Loan EMI Calculator</a>
+                                <a href="#compound-interest-calculator" class="mobile-submenu-item">Compound Interest</a>
+                                <a href="#retirement-calculator" class="mobile-submenu-item">Retirement Planning</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Health & Fitness Mobile Submenu -->
+                        <div>
+                            <div onclick="toggleMobileSubmenu('health-submenu')" class="mobile-submenu-header">
+                                <span>Health & Fitness</span>
+                                <svg class="w-4 h-4 transform transition-transform" id="health-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </div>
+                            <div id="health-submenu" class="mobile-submenu">
+                                <a href="#bmi-calculator" class="mobile-submenu-item">BMI Calculator</a>
+                                <a href="#calorie-calculator" class="mobile-submenu-item">Calorie Calculator</a>
+                                <a href="#body-fat-calculator" class="mobile-submenu-item">Body Fat Calculator</a>
+                                <a href="#water-intake-calculator" class="mobile-submenu-item">Water Intake</a>
+                                <a href="#ideal-weight-calculator" class="mobile-submenu-item">Ideal Weight</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Math Calculators Mobile Submenu -->
+                        <div>
+                            <div onclick="toggleMobileSubmenu('math-submenu')" class="mobile-submenu-header">
+                                <span>Math Calculators</span>
+                                <svg class="w-4 h-4 transform transition-transform" id="math-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </div>
+                            <div id="math-submenu" class="mobile-submenu">
+                                <a href="#scientific-calculator" class="mobile-submenu-item">Scientific Calculator</a>
+                                <a href="#graphing-calculator" class="mobile-submenu-item">Graphing Calculator</a>
+                                <a href="#algebra-calculator" class="mobile-submenu-item">Algebra Calculator</a>
+                                <a href="#geometry-calculator" class="mobile-submenu-item">Geometry Calculator</a>
+                                <a href="#statistics-calculator" class="mobile-submenu-item">Statistics Calculator</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Other Calculators Mobile Submenu -->
+                        <div>
+                            <div onclick="toggleMobileSubmenu('other-submenu')" class="mobile-submenu-header">
+                                <span>Other Calculators</span>
+                                <svg class="w-4 h-4 transform transition-transform" id="other-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </div>
+                            <div id="other-submenu" class="mobile-submenu">
+                                <a href="#age-calculator" class="mobile-submenu-item">Age Calculator</a>
+                                <a href="#date-calculator" class="mobile-submenu-item">Date Calculator</a>
+                                <a href="#percentage-calculator" class="mobile-submenu-item">Percentage Calculator</a>
+                                <a href="#tip-calculator" class="mobile-submenu-item">Tip Calculator</a>
+                                <a href="#grade-calculator" class="mobile-submenu-item">Grade Calculator</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mobile AI Converters Dropdown -->
+                <div>
+                    <button onclick="toggleMobileDropdown('conv-dropdown')" class="w-full text-left py-2 px-4 rounded hover:bg-white hover:bg-opacity-10 transition-colors flex items-center justify-between">
+                        <span>AI Converters</span>
+                        <svg class="w-4 h-4 transform transition-transform" id="conv-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div id="conv-dropdown" class="mobile-dropdown-menu">
+                        <a href="#unit-converter" class="mobile-dropdown-item">Unit Converter</a>
+                        <a href="#currency-converter" class="mobile-dropdown-item">Currency Converter</a>
+                        <a href="#temperature-converter" class="mobile-dropdown-item">Temperature Converter</a>
+                        <a href="#length-converter" class="mobile-dropdown-item">Length Converter</a>
+                        <a href="#weight-converter" class="mobile-dropdown-item">Weight Converter</a>
+                        <a href="#time-converter" class="mobile-dropdown-item">Time Converter</a>
+                    </div>
+                </div>
+                
+                <a href="#about" class="block py-2 px-4 rounded hover:bg-white hover:bg-opacity-10 transition-colors">About Us</a>
             </div>
         </div>
     </nav>
@@ -886,6 +1254,36 @@
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
         });
+
+        // Mobile dropdown toggle function
+        function toggleMobileDropdown(dropdownId) {
+            const dropdown = document.getElementById(dropdownId);
+            const arrow = dropdownId === 'calc-dropdown' ? 
+                document.getElementById('calc-arrow') : 
+                document.getElementById('conv-arrow');
+            
+            dropdown.classList.toggle('active');
+            arrow.style.transform = dropdown.classList.contains('active') ? 
+                'rotate(180deg)' : 'rotate(0deg)';
+        }
+
+        // Mobile submenu toggle function
+        function toggleMobileSubmenu(submenuId) {
+            const submenu = document.getElementById(submenuId);
+            const arrowMap = {
+                'financial-submenu': 'financial-arrow',
+                'health-submenu': 'health-arrow',
+                'math-submenu': 'math-arrow',
+                'other-submenu': 'other-arrow'
+            };
+            const arrow = document.getElementById(arrowMap[submenuId]);
+            
+            submenu.classList.toggle('active');
+            if (arrow) {
+                arrow.style.transform = submenu.classList.contains('active') ? 
+                    'rotate(180deg)' : 'rotate(0deg)';
+            }
+        }
 
         // Smooth scrolling function
         function scrollToSection(sectionId) {
