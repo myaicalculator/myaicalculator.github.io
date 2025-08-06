@@ -1,0 +1,2807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <title>AI Home Loan EMI Calculator | Free Mortgage Calculator with Smart Analysis - AI Calculator</title>
+    <meta name="description" content="Free AI-powered home loan EMI calculator with instant results, amortization tables, prepayment analysis, and smart recommendations. Calculate your mortgage EMI in seconds with detailed breakdowns." />
+    <meta name="keywords" content="home loan EMI calculator, mortgage calculator, loan EMI, prepayment calculator, AI calculator, financial calculator, loan amortization, home loan interest, best home loan provider, pre-approved home loan, housing finance, property loan calculator, mortgage planning" />
+    <meta name="author" content="AI Calculator" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="AI Home Loan EMI Calculator | Free Mortgage Calculator with Smart Analysis" />
+    <meta property="og:description" content="Calculate your home loan EMI instantly with our AI-powered calculator. Get detailed amortization tables, prepayment analysis, and smart financial recommendations." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://myaicalculator.xyz/home-loan-emi-calculator" />
+    <meta property="og:site_name" content="AI Calculator" />
+    <meta property="og:locale" content="en_US" />
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="AI Home Loan EMI Calculator | Free Mortgage Calculator" />
+    <meta name="twitter:description" content="Calculate your home loan EMI instantly with detailed analysis and smart recommendations." />
+    
+    <!-- Canonical Link -->
+    <link rel="canonical" href="https://myaicalculator.xyz/home-loan-emi-calculator" />
+    
+    <!-- Structured Data (JSON-LD) for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "AI Home Loan EMI Calculator",
+        "description": "Free AI-powered home loan EMI calculator with instant results, amortization tables, prepayment analysis, and smart financial recommendations.",
+        "url": "https://myaicalculator.xyz/home-loan-emi-calculator",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "creator": {
+            "@type": "Organization",
+            "name": "AI Calculator",
+            "url": "https://myaicalculator.xyz"
+        },
+        "featureList": [
+            "EMI calculation with real-time results",
+            "Detailed amortization schedule",
+            "Prepayment impact analysis",
+            "AI-powered financial recommendations",
+            "Loan comparison tool",
+            "PDF and CSV export functionality",
+            "Mobile-responsive design"
+        ],
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "200",
+            "bestRating": "5",
+            "worstRating": "1"
+        }
+    }
+    </script>
+
+    <!-- FAQ Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "How is EMI calculated for home loans?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "EMI is calculated using the formula: EMI = [P × R × (1+R)^N] / [(1+R)^N-1], where P is the principal loan amount, R is the monthly interest rate (annual rate divided by 12), and N is the total number of monthly installments."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What factors affect my home loan EMI?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Key factors include loan amount (higher amount = higher EMI), interest rate (lower rate = lower EMI), loan tenure (longer tenure = lower EMI but more total interest), and your credit score which affects the interest rate offered."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is a Pre-Approved Home Loan?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "A pre-approved home loan is a loan approval given by a lender based on your financial profile before you finalize a property. It provides clarity on loan amount, interest rate, and helps in faster property purchase decisions."
+                }
+            }
+        ]
+    }
+    </script>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Custom EMI Calculator Colors - Matching myaicalculator.xyz */
+            --navy: #0f172a;
+            --navy-light: #1e293b;
+            --navy-lighter: #334155;
+            --cyan-bright: #00ffff;
+            --lime-bright: #00ff00;
+            --emi-accent: #00d9ff;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --text-light: #e2e8f0;
+            --text-muted: #cbd5e1;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 50%, var(--navy-lighter) 100%);
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Glass Morphism Effects */
+        .glass-morphism {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+        }
+
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 217, 255, 0.3);
+        }
+
+        /* AI Gradient Text */
+        .ai-gradient {
+            background: linear-gradient(135deg, var(--cyan-bright), var(--lime-bright), var(--emi-accent));
+            background-size: 300% 300%;
+            animation: gradient-shift 3s ease-in-out infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Button Styles */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--cyan-bright), var(--lime-bright));
+            color: var(--navy);
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 217, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--glass-bg);
+            color: white;
+            padding: 12px 24px;
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: var(--emi-accent);
+        }
+
+        /* Card Styles */
+        .card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-light);
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            padding: 12px 16px;
+            background: var(--navy-light);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--emi-accent);
+            box-shadow: 0 0 0 3px rgba(0, 217, 255, 0.1);
+        }
+
+        .form-select {
+            cursor: pointer;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        /* Input Sliders */
+        .input-slider {
+            margin-top: 8px;
+        }
+
+        .input-slider input[type="range"] {
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: var(--navy-lighter);
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .input-slider input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--emi-accent);
+            cursor: pointer;
+        }
+
+        .input-slider input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--emi-accent);
+            cursor: pointer;
+            border: none;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 50;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .navbar-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .navbar-brand {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--emi-accent);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .navbar-nav {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .navbar-nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .navbar-nav a:hover {
+            color: var(--emi-accent);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--emi-accent);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding-top: 64px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 80px 0 60px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-features {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .feature-badge {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Calculator Section */
+        .calculator-section {
+            padding: 40px 0;
+        }
+
+        .calculator-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            align-items: start;
+        }
+
+        .calculator-form h2 {
+            margin-bottom: 16px;
+            color: var(--emi-accent);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-description {
+            margin-bottom: 24px;
+            color: var(--text-muted);
+        }
+
+        .advanced-options {
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .advanced-options h3 {
+            margin-bottom: 16px;
+            font-size: 18px;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .calculate-btn {
+            width: 100%;
+            margin-top: 24px;
+            padding: 16px;
+            font-size: 18px;
+        }
+
+        /* Results Section */
+        .results-section {
+            max-height: 80vh;
+            overflow-y: auto;
+            padding-right: 8px;
+        }
+
+        .results-section::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .results-section::-webkit-scrollbar-track {
+            background: var(--navy-lighter);
+            border-radius: 3px;
+        }
+
+        .results-section::-webkit-scrollbar-thumb {
+            background: var(--emi-accent);
+            border-radius: 3px;
+        }
+
+        .results-overview h3 {
+            margin-bottom: 20px;
+            color: var(--emi-accent);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .result-card {
+            text-align: center;
+            padding: 20px;
+            background: var(--glass-bg);
+            border-radius: 12px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .result-value {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--emi-accent);
+            margin-bottom: 8px;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            line-height: 1.2;
+        }
+
+        .result-label {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        /* AI Recommendations */
+        .ai-recommendations h3 {
+            margin-bottom: 16px;
+            color: var(--emi-accent);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .recommendation-item {
+            background: var(--navy-light);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+
+        .recommendation-item h4 {
+            color: var(--lime-bright);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .recommendation-item p {
+            color: var(--text-light);
+            margin-bottom: 8px;
+        }
+
+        .recommendation-impact {
+            font-size: 14px;
+            color: var(--cyan-bright);
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .recommendation-action {
+            font-size: 14px;
+            color: var(--lime-bright);
+            font-weight: 500;
+            background: rgba(0, 255, 0, 0.1);
+            padding: 8px 12px;
+            border-radius: 6px;
+            border-left: 3px solid var(--lime-bright);
+        }
+
+        .recommendation-item.priority-high {
+            border-left: 4px solid #ff4444;
+            background: rgba(255, 68, 68, 0.05);
+        }
+
+        .recommendation-item.priority-medium {
+            border-left: 4px solid var(--emi-accent);
+            background: rgba(0, 217, 255, 0.05);
+        }
+
+        .recommendation-item.priority-low {
+            border-left: 4px solid var(--lime-bright);
+            background: rgba(0, 255, 0, 0.05);
+        }
+
+        .chart-section-wrapper,
+        .prepayment-section-wrapper,
+        .amortization-section-wrapper {
+            margin-top: 32px;
+        }
+
+        /* Chart Section */
+        .chart-section h3 {
+            margin-bottom: 20px;
+            color: var(--emi-accent);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin-bottom: 16px;
+        }
+
+        /* Prepayment Section */
+        .prepayment-section h3 {
+            margin-bottom: 16px;
+            color: var(--emi-accent);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .prepayment-form {
+            margin-bottom: 20px;
+        }
+
+        .prepayment-results {
+            background: var(--navy-light);
+            border-radius: 8px;
+            padding: 16px;
+        }
+
+        .savings-highlight {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(0, 255, 0, 0.1), rgba(0, 255, 255, 0.1));
+            border-radius: 8px;
+            margin-bottom: 16px;
+        }
+
+        .savings-amount {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--lime-bright);
+            margin-bottom: 8px;
+        }
+
+        .savings-label {
+            color: var(--text-light);
+            font-size: 16px;
+        }
+
+        /* Amortization Table */
+        .amortization-section h3 {
+            margin-bottom: 16px;
+            color: var(--emi-accent);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .table-controls {
+            margin-bottom: 16px;
+            display: flex;
+            gap: 12px;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table th,
+        .table td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--glass-border);
+            white-space: nowrap;
+        }
+
+        .table th {
+            background: var(--glass-bg);
+            font-weight: 600;
+            color: var(--emi-accent);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .table tbody tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .table tbody tr:hover {
+            background: rgba(0, 217, 255, 0.1);
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 60px 0;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .content-section h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 32px;
+            text-align: center;
+            color: var(--emi-accent);
+        }
+
+        .content-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 32px;
+            text-align: center;
+            color: var(--emi-accent);
+        }
+
+        .content-section h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--lime-bright);
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 24px;
+        }
+
+        .content-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 24px;
+        }
+
+        .content-card h3 {
+            color: var(--lime-bright);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .content-card h4 {
+            color: var(--cyan-bright);
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+        }
+
+        .content-card p {
+            color: var(--text-light);
+            margin-bottom: 16px;
+        }
+
+        .content-card ul {
+            color: var(--text-light);
+            padding-left: 20px;
+            margin-bottom: 16px;
+        }
+
+        .content-card li {
+            margin-bottom: 8px;
+        }
+
+        /* Formula Card */
+        .formula-card {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .formula {
+            font-size: 1.5rem;
+            color: var(--cyan-bright);
+            margin: 24px 0;
+            padding: 20px;
+            background: var(--navy-light);
+            border-radius: 8px;
+            border: 1px solid var(--glass-border);
+            font-family: 'Courier New', monospace;
+        }
+
+        .formula-variables {
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .formula-variables ul {
+            padding-left: 20px;
+        }
+
+        /* Example Calculation */
+        .example-calculation {
+            margin-bottom: 32px;
+        }
+
+        .example-details {
+            background: var(--navy-light);
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+        }
+
+        .example-details p {
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .calculation-steps ol {
+            padding-left: 20px;
+        }
+
+        .calculation-steps li {
+            margin-bottom: 8px;
+            color: var(--text-light);
+        }
+
+        /* Planning Grid */
+        .planning-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+        }
+
+        .planning-card h3 {
+            color: var(--cyan-bright);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .planning-tips, .property-factors, .strategy-options {
+            margin-top: 16px;
+        }
+
+        .planning-tips h4, .property-factors h4, .strategy-options h4 {
+            color: var(--lime-bright);
+            margin-bottom: 12px;
+        }
+
+        /* Provider Comparison */
+        .comparison-factors {
+            margin-bottom: 32px;
+        }
+
+        .factors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .factor-item {
+            background: var(--navy-light);
+            padding: 16px;
+            border-radius: 8px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .factor-item h4 {
+            color: var(--emi-accent);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .lender-comparison {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .lender-type {
+            background: var(--navy-light);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .lender-type h4 {
+            color: var(--lime-bright);
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .pros-cons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .pros, .cons {
+            padding: 12px;
+            border-radius: 6px;
+        }
+
+        .pros {
+            background: rgba(0, 255, 0, 0.1);
+            border: 1px solid rgba(0, 255, 0, 0.3);
+        }
+
+        .cons {
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+        }
+
+        .pros strong, .cons strong {
+            color: var(--text-light);
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .pros ul, .cons ul {
+            font-size: 14px;
+            padding-left: 16px;
+        }
+
+        /* Pre-approval Content */
+        .pre-approval-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .benefit-item {
+            background: var(--navy-light);
+            padding: 16px;
+            border-radius: 8px;
+            border: 1px solid var(--glass-border);
+            text-align: center;
+        }
+
+        .benefit-item h4 {
+            color: var(--cyan-bright);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 16px;
+        }
+
+        .benefit-item p {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        /* Process Steps */
+        .process-steps {
+            margin-top: 20px;
+        }
+
+        .step {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--emi-accent);
+            color: var(--navy);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            color: var(--lime-bright);
+            margin-bottom: 8px;
+        }
+
+        .step-content p {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .faq-question h3 {
+            color: var(--text-light);
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .faq-question i {
+            color: var(--emi-accent);
+            transition: transform 0.3s ease;
+            font-size: 20px;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 20px 20px;
+        }
+
+        .faq-answer p {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 24px;
+        }
+
+        .contact-form textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--navy);
+            border-top: 1px solid var(--glass-border);
+            padding: 48px 20px 24px;
+            margin-top: 64px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 32px;
+        }
+
+        .footer-section h3 {
+            color: var(--emi-accent);
+            margin-bottom: 16px;
+            font-size: 18px;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .footer-section a:hover {
+            color: var(--emi-accent);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 24px;
+            margin-top: 24px;
+            border-top: 1px solid var(--glass-border);
+            color: var(--text-muted);
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--emi-accent);
+            color: var(--navy);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 217, 255, 0.4);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .calculator-container {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pre-approval-content {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar-nav {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-features {
+                justify-content: center;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            
+            .planning-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .lender-comparison {
+                grid-template-columns: 1fr;
+            }
+            
+            .pros-cons {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-content {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+            
+            .card {
+                padding: 16px;
+            }
+            
+            .hero {
+                padding: 40px 0 30px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .content-section {
+                padding: 40px 0;
+            }
+            
+            .content-section h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="https://myaicalculator.xyz" class="navbar-brand">
+                <i class="bi bi-calculator"></i> AI Calculator
+            </a>
+            <ul class="navbar-nav">
+                <li><a href="#calculator">Calculator</a></li>
+                <li><a href="#what-is-emi-calculator">About EMI</a></li>
+                <li><a href="#how-emi-works">How It Works</a></li>
+                <li><a href="#loan-planning">Loan Planning</a></li>
+                <li><a href="#best-home-loan-provider">Best Providers</a></li>
+                <li><a href="#pre-approved-loan">Pre-Approval</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i class="bi bi-list"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <h1 class="ai-gradient">AI Home Loan EMI Calculator</h1>
+            <p>Calculate your home loan EMI instantly with our advanced AI-powered calculator. Get detailed amortization schedules, prepayment analysis, and smart financial recommendations to make informed decisions.</p>
+            <div class="hero-features">
+                <div class="feature-badge"><i class="bi bi-lightning-fill"></i> Instant Results</div>
+                <div class="feature-badge"><i class="bi bi-robot"></i> AI Insights</div>
+                <div class="feature-badge"><i class="bi bi-shield-check"></i> 100% Free</div>
+                <div class="feature-badge"><i class="bi bi-graph-up"></i> Advanced Analytics</div>
+            </div>
+        </section>
+
+        <!-- EMI Calculator Section -->
+        <section id="calculator" class="calculator-section">
+            <div class="calculator-container">
+                <div class="calculator-form card hover-lift">
+                    <h2><i class="bi bi-calculator"></i> Home Loan EMI Calculator</h2>
+                    <p class="section-description">Enter your loan details to calculate EMI, total interest, and get AI-powered recommendations for optimal loan planning.</p>
+                    
+                    <form id="emi-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Loan Amount (₹)</label>
+                                <input type="number" id="loanAmount" class="form-input" placeholder="Enter loan amount" min="100000" max="100000000" value="5000000">
+                                <div class="input-slider">
+                                    <input type="range" id="loanAmountSlider" min="100000" max="10000000" value="5000000" step="100000">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Annual Interest Rate (%)</label>
+                                <input type="number" id="interestRate" class="form-input" placeholder="Enter interest rate" min="1" max="20" step="0.1" value="8.5">
+                                <div class="input-slider">
+                                    <input type="range" id="interestRateSlider" min="6" max="15" value="8.5" step="0.1">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Loan Tenure</label>
+                                <select id="tenureType" class="form-select">
+                                    <option value="years">Years</option>
+                                    <option value="months">Months</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Tenure Value</label>
+                                <input type="number" id="tenure" class="form-input" placeholder="Enter tenure" min="1" max="30" value="20">
+                                <div class="input-slider">
+                                    <input type="range" id="tenureSlider" min="1" max="30" value="20" step="1">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="advanced-options">
+                            <h3><i class="bi bi-gear"></i> Advanced Options</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Processing Fee (₹)</label>
+                                    <input type="number" id="processingFee" class="form-input" placeholder="Optional" min="0" value="0">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Insurance Premium (₹/year)</label>
+                                    <input type="number" id="insurance" class="form-input" placeholder="Optional" min="0" value="0">
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn-primary calculate-btn" onclick="calculateEMI()">
+                            <i class="bi bi-calculator"></i> Calculate EMI with AI Analysis
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Results Section -->
+                <div class="results-section" id="results" style="display: none;">
+                    <div class="results-overview card">
+                        <h3><i class="bi bi-graph-up"></i> EMI Calculation Results</h3>
+                        <div class="results-grid">
+                            <div class="result-card">
+                                <div class="result-value" id="monthlyEMI">₹0</div>
+                                <div class="result-label">Monthly EMI</div>
+                            </div>
+                            <div class="result-card">
+                                <div class="result-value" id="totalInterest">₹0</div>
+                                <div class="result-label">Total Interest</div>
+                            </div>
+                            <div class="result-card">
+                                <div class="result-value" id="totalAmount">₹0</div>
+                                <div class="result-label">Total Amount</div>
+                            </div>
+                            <div class="result-card">
+                                <div class="result-value" id="interestPercentage">0%</div>
+                                <div class="result-label">Interest vs Principal</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AI Recommendations -->
+                    <div class="ai-recommendations card">
+                        <h3><i class="bi bi-robot"></i> AI Smart Recommendations</h3>
+                        <div id="aiRecommendations"></div>
+                    </div>
+                </div>
+
+                <!-- Separate Chart Section -->
+                <div class="chart-section-wrapper">
+                    <div class="chart-section card">
+                        <h3><i class="bi bi-pie-chart"></i> EMI Breakdown Analysis</h3>
+                        <p class="section-description">Visual representation of your loan's principal and interest components to help you understand the cost structure.</p>
+                        <div class="chart-container">
+                            <canvas id="emiChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Separate Prepayment Analysis Section -->
+                <div class="prepayment-section-wrapper">
+                    <div class="prepayment-section card">
+                        <h3><i class="bi bi-lightning"></i> Prepayment Impact Analysis</h3>
+                        <p class="section-description">Calculate how prepayments can reduce your total interest burden and loan tenure. Enter different scenarios to find the optimal prepayment strategy.</p>
+                        <div class="prepayment-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Prepayment Amount (₹)</label>
+                                    <input type="number" id="prepaymentAmount" class="form-input" placeholder="Enter prepayment amount" min="0">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">After Year</label>
+                                    <input type="number" id="prepaymentYear" class="form-input" placeholder="Year" min="1" max="30" value="5">
+                                </div>
+                            </div>
+                            <button type="button" class="btn-secondary" onclick="calculatePrepayment()">
+                                <i class="bi bi-calculator"></i> Calculate Savings
+                            </button>
+                        </div>
+                        <div id="prepaymentResults" style="display: none;"></div>
+                    </div>
+                </div>
+
+                <!-- Separate Amortization Table Section -->
+                <div class="amortization-section-wrapper">
+                    <div class="amortization-section card">
+                        <h3><i class="bi bi-table"></i> Loan Amortization Schedule</h3>
+                        <p class="section-description">Detailed year-wise breakdown of your loan payments showing how much goes towards principal and interest each year.</p>
+                        <div class="table-controls">
+                            <button class="btn-secondary" onclick="exportAmortization('csv')">
+                                <i class="bi bi-download"></i> Export CSV
+                            </button>
+                            <button class="btn-secondary" onclick="exportAmortization('pdf')">
+                                <i class="bi bi-file-pdf"></i> Export PDF
+                            </button>
+                        </div>
+                        <div class="table-container">
+                            <table class="table" id="amortizationTable">
+                                <thead>
+                                    <tr>
+                                        <th>Year</th>
+                                        <th>Total Payment</th>
+                                        <th>Principal</th>
+                                        <th>Interest</th>
+                                        <th>Outstanding Balance</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="amortizationBody">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- What is Home Loan EMI Calculator Section -->
+        <section id="what-is-emi-calculator" class="content-section">
+            <div class="content-container">
+                <h1>What is Home Loan EMI Calculator?</h1>
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h3><i class="bi bi-question-circle"></i> Definition and Purpose</h3>
+                        <p>A Home Loan EMI Calculator is a sophisticated financial tool that helps you determine your Equated Monthly Installment (EMI) for home loans. It uses mathematical formulas to calculate exact monthly payments based on loan amount, interest rate, and tenure.</p>
+                        <h4>Key Features:</h4>
+                        <ul>
+                            <li>Instant EMI calculations</li>
+                            <li>Total interest computation</li>
+                            <li>Amortization schedule generation</li>
+                            <li>Prepayment impact analysis</li>
+                            <li>AI-powered financial recommendations</li>
+                        </ul>
+                    </div>
+                    <div class="content-card">
+                        <h3><i class="bi bi-gear"></i> How It Works</h3>
+                        <p>Our AI-powered EMI calculator uses advanced algorithms to process your loan parameters and provide comprehensive analysis including optimal loan strategies and cost-saving recommendations.</p>
+                        <h4>Benefits:</h4>
+                        <ul>
+                            <li>Accurate financial planning</li>
+                            <li>Budget management assistance</li>
+                            <li>Loan comparison capabilities</li>
+                            <li>Interest savings identification</li>
+                            <li>Smart payment strategies</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How EMI is Calculated Section -->
+        <section id="how-emi-works" class="content-section">
+            <div class="content-container">
+                <h2>Illustration: How is EMI on Loan Calculated?</h2>
+                
+                <div class="formula-card card">
+                    <h3><i class="bi bi-calculator"></i> EMI Calculation Formula</h3>
+                    <div class="formula">
+                        EMI = [P × R × (1+R)ᴺ] / [(1+R)ᴺ-1]
+                    </div>
+                    <div class="formula-variables">
+                        <h4>Where:</h4>
+                        <ul>
+                            <li><strong>P</strong> = Principal loan amount</li>
+                            <li><strong>R</strong> = Monthly interest rate (Annual rate ÷ 12 ÷ 100)</li>
+                            <li><strong>N</strong> = Total number of monthly installments (Tenure in years × 12)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="example-calculation card">
+                    <h3><i class="bi bi-file-text"></i> Example Calculation</h3>
+                    <div class="example-details">
+                        <p><strong>Loan Amount:</strong> ₹50,00,000</p>
+                        <p><strong>Interest Rate:</strong> 8.5% per annum</p>
+                        <p><strong>Tenure:</strong> 20 years (240 months)</p>
+                    </div>
+                    <div class="calculation-steps">
+                        <h4>Step-by-step calculation:</h4>
+                        <ol>
+                            <li>Monthly interest rate (R) = 8.5 ÷ 12 ÷ 100 = 0.007083</li>
+                            <li>Number of installments (N) = 20 × 12 = 240</li>
+                            <li>(1+R)ᴺ = (1.007083)²⁴⁰ = 5.4276</li>
+                            <li>EMI = [50,00,000 × 0.007083 × 5.4276] / [5.4276-1]</li>
+                            <li><strong>EMI = ₹43,391</strong></li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h3><i class="bi bi-bar-chart"></i> Factors Affecting EMI</h3>
+                        <h4>Primary Factors:</h4>
+                        <ul>
+                            <li><strong>Loan Amount:</strong> Higher amount = Higher EMI</li>
+                            <li><strong>Interest Rate:</strong> Lower rate = Lower EMI</li>
+                            <li><strong>Loan Tenure:</strong> Longer tenure = Lower EMI (but more total interest)</li>
+                        </ul>
+                        <h4>Secondary Factors:</h4>
+                        <ul>
+                            <li>Credit score and credit history</li>
+                            <li>Income stability and debt-to-income ratio</li>
+                            <li>Down payment amount</li>
+                            <li>Property type and location</li>
+                        </ul>
+                    </div>
+                    <div class="content-card">
+                        <h3><i class="bi bi-lightbulb"></i> EMI Optimization Tips</h3>
+                        <h4>Reduce EMI Burden:</h4>
+                        <ul>
+                            <li>Increase down payment to reduce loan amount</li>
+                            <li>Choose longer tenure (consider total interest)</li>
+                            <li>Negotiate for better interest rates</li>
+                            <li>Improve credit score before applying</li>
+                        </ul>
+                        <h4>Save on Total Interest:</h4>
+                        <ul>
+                            <li>Make regular prepayments</li>
+                            <li>Choose shorter tenure if affordable</li>
+                            <li>Consider step-up EMI options</li>
+                            <li>Review and refinance periodically</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Loan Planning Section -->
+        <section id="loan-planning" class="content-section">
+            <div class="content-container">
+                <h2>How does EMI calculation help in planning the home purchase?</h2>
+                
+                <div class="planning-grid">
+                    <div class="content-card">
+                        <h3><i class="bi bi-house"></i> Budget Planning</h3>
+                        <p>EMI calculation helps you understand your monthly financial commitment and plan your budget accordingly. It ensures you don't overextend financially and maintain a healthy debt-to-income ratio.</p>
+                        <div class="planning-tips">
+                            <h4>Financial Planning Tips:</h4>
+                            <ul>
+                                <li>Keep EMI under 40% of monthly income</li>
+                                <li>Factor in other monthly expenses</li>
+                                <li>Plan for property maintenance costs</li>
+                                <li>Keep emergency fund separate</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="content-card">
+                        <h3><i class="bi bi-graph-up"></i> Property Selection</h3>
+                        <p>Knowing your EMI capacity helps narrow down property options within your budget. You can determine the maximum loan amount you can comfortably service and choose properties accordingly.</p>
+                        <div class="property-factors">
+                            <h4>Property Selection Factors:</h4>
+                            <ul>
+                                <li>Property price vs loan eligibility</li>
+                                <li>Location and future appreciation potential</li>
+                                <li>Property type and configuration</li>
+                                <li>Developer reputation and project status</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="content-card">
+                        <h3><i class="bi bi-calendar"></i> Timeline Planning</h3>
+                        <p>EMI calculations help you plan the timing of your home purchase. You can assess whether to buy now or wait, save more for down payment, or improve your income before taking the loan.</p>
+                        <div class="strategy-options">
+                            <h4>Timing Strategies:</h4>
+                            <ul>
+                                <li>Save more for higher down payment</li>
+                                <li>Wait for income growth</li>
+                                <li>Time market for better interest rates</li>
+                                <li>Plan around major life events</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="content-card">
+                        <h3><i class="bi bi-shield-check"></i> Financial Security</h3>
+                        <p>Understanding EMI obligations helps you plan for financial security. You can assess loan insurance needs, plan for prepayments, and ensure long-term financial stability.</p>
+                        <div class="strategy-options">
+                            <h4>Security Measures:</h4>
+                            <ul>
+                                <li>Term insurance coverage for loan amount</li>
+                                <li>Emergency fund for 6-12 months EMI</li>
+                                <li>Income protection strategies</li>
+                                <li>Regular loan review and optimization</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Best Home Loan Provider Section -->
+        <section id="best-home-loan-provider" class="content-section">
+            <div class="content-container">
+                <h2>How to Choose Best Home Loan Provider</h2>
+                
+                <div class="comparison-factors">
+                    <h3><i class="bi bi-search"></i> Key Comparison Factors</h3>
+                    <div class="factors-grid">
+                        <div class="factor-item">
+                            <h4><i class="bi bi-percent"></i> Interest Rates</h4>
+                            <p>Compare both fixed and floating rates. Look for the lowest effective interest rate and understand rate revision policies.</p>
+                        </div>
+                        <div class="factor-item">
+                            <h4><i class="bi bi-currency-rupee"></i> Processing Fees</h4>
+                            <p>Evaluate processing fees, documentation charges, and other hidden costs that impact the total loan cost.</p>
+                        </div>
+                        <div class="factor-item">
+                            <h4><i class="bi bi-clock"></i> Processing Time</h4>
+                            <p>Consider loan approval and disbursal timeline, especially if you have a property purchase deadline.</p>
+                        </div>
+                        <div class="factor-item">
+                            <h4><i class="bi bi-gear"></i> Loan Features</h4>
+                            <p>Look for features like prepayment flexibility, top-up loans, balance transfer options, and step-up EMI facilities.</p>
+                        </div>
+                        <div class="factor-item">
+                            <h4><i class="bi bi-headset"></i> Customer Service</h4>
+                            <p>Evaluate customer support quality, branch network, digital banking facilities, and grievance redressal mechanisms.</p>
+                        </div>
+                        <div class="factor-item">
+                            <h4><i class="bi bi-file-text"></i> Documentation</h4>
+                            <p>Consider documentation requirements, eligibility criteria, and the complexity of the application process.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lender-comparison">
+                    <div class="lender-type">
+                        <h4>Public Sector Banks</h4>
+                        <div class="pros-cons">
+                            <div class="pros">
+                                <strong>Pros:</strong>
+                                <ul>
+                                    <li>Lower interest rates</li>
+                                    <li>Flexible eligibility criteria</li>
+                                    <li>Extensive branch network</li>
+                                    <li>Government backing and trust</li>
+                                </ul>
+                            </div>
+                            <div class="cons">
+                                <strong>Cons:</strong>
+                                <ul>
+                                    <li>Longer processing time</li>
+                                    <li>Complex documentation</li>
+                                    <li>Limited digital features</li>
+                                    <li>Bureaucratic processes</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="lender-type">
+                        <h4>Private Banks</h4>
+                        <div class="pros-cons">
+                            <div class="pros">
+                                <strong>Pros:</strong>
+                                <ul>
+                                    <li>Faster processing</li>
+                                    <li>Better customer service</li>
+                                    <li>Advanced digital features</li>
+                                    <li>Flexible loan products</li>
+                                </ul>
+                            </div>
+                            <div class="cons">
+                                <strong>Cons:</strong>
+                                <ul>
+                                    <li>Higher interest rates</li>
+                                    <li>Stricter eligibility</li>
+                                    <li>Higher processing fees</li>
+                                    <li>Aggressive sales tactics</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="lender-type">
+                        <h4>Housing Finance Companies</h4>
+                        <div class="pros-cons">
+                            <div class="pros">
+                                <strong>Pros:</strong>
+                                <ul>
+                                    <li>Specialized expertise</li>
+                                    <li>Competitive rates</li>
+                                    <li>Quick approvals</li>
+                                    <li>Flexible terms</li>
+                                </ul>
+                            </div>
+                            <div class="cons">
+                                <strong>Cons:</strong>
+                                <ul>
+                                    <li>Limited branch network</li>
+                                    <li>Higher risk perception</li>
+                                    <li>Variable service quality</li>
+                                    <li>Limited product range</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="bi bi-list-check"></i> Selection Checklist</h3>
+                    <h4>Before Finalizing Your Lender:</h4>
+                    <ul>
+                        <li>Get written quotes from multiple lenders</li>
+                        <li>Read all terms and conditions carefully</li>
+                        <li>Understand prepayment and foreclosure charges</li>
+                        <li>Check for hidden fees and charges</li>
+                        <li>Verify lender credentials and RBI approval</li>
+                        <li>Read customer reviews and ratings</li>
+                        <li>Consider long-term relationship potential</li>
+                        <li>Ensure loan features match your needs</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pre-Approved Home Loan Section -->
+        <section id="pre-approved-loan" class="content-section">
+            <div class="content-container">
+                <h2>What is a Pre-Approved Home Loan?</h2>
+                
+                <div class="pre-approval-content">
+                    <div class="content-card">
+                        <h3><i class="bi bi-award"></i> Definition and Concept</h3>
+                        <p>A pre-approved home loan is a conditional approval from a lender based on your financial profile, creditworthiness, and income. It provides clarity on the loan amount you're eligible for before you start property hunting.</p>
+                        
+                        <h4>How It Works:</h4>
+                        <ul>
+                            <li>Lender evaluates your financial documents</li>
+                            <li>Credit score and income assessment</li>
+                            <li>Conditional approval for specific amount</li>
+                            <li>Valid for 3-6 months typically</li>
+                            <li>Final approval subject to property verification</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="content-card">
+                        <h3><i class="bi bi-speedometer"></i> Benefits of Pre-Approval</h3>
+                        <div class="benefits-grid">
+                            <div class="benefit-item">
+                                <h4><i class="bi bi-lightning"></i> Faster Processing</h4>
+                                <p>Quick loan disbursal once property is finalized</p>
+                            </div>
+                            <div class="benefit-item">
+                                <h4><i class="bi bi-currency-rupee"></i> Budget Clarity</h4>
+                                <p>Know exact loan amount and plan property search</p>
+                            </div>
+                            <div class="benefit-item">
+                                <h4><i class="bi bi-shield-check"></i> Negotiation Power</h4>
+                                <p>Stronger position in property negotiations</p>
+                            </div>
+                            <div class="benefit-item">
+                                <h4><i class="bi bi-percent"></i> Rate Lock</h4>
+                                <p>Lock current interest rates for specific period</p>
+                            </div>
+                            <div class="benefit-item">
+                                <h4><i class="bi bi-clock"></i> Time Saving</h4>
+                                <p>Avoid last-minute loan processing delays</p>
+                            </div>
+                            <div class="benefit-item">
+                                <h4><i class="bi bi-graph-up"></i> Better Planning</h4>
+                                <p>Plan finances and property selection effectively</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <h3><i class="bi bi-list-ol"></i> Pre-Approval Process</h3>
+                    <div class="process-steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Document Submission</h4>
+                                <p>Submit income proof, identity documents, bank statements, and credit history to the lender.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Financial Assessment</h4>
+                                <p>Lender evaluates your creditworthiness, income stability, and repayment capacity.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Credit Verification</h4>
+                                <p>CIBIL score check and credit history analysis to determine loan eligibility.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>Conditional Approval</h4>
+                                <p>Receive pre-approval letter with loan amount, interest rate, and validity period.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">5</div>
+                            <div class="step-content">
+                                <h4>Property Selection</h4>
+                                <p>Search and finalize property within approved loan amount and validity period.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">6</div>
+                            <div class="step-content">
+                                <h4>Final Approval</h4>
+                                <p>Submit property documents for verification and receive final loan approval.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h3><i class="bi bi-file-earmark-text"></i> Required Documents</h3>
+                        <h4>Personal Documents:</h4>
+                        <ul>
+                            <li>Identity proof (Aadhaar, PAN, Passport)</li>
+                            <li>Address proof (utility bills, Aadhaar)</li>
+                            <li>Age proof (birth certificate, passport)</li>
+                            <li>Passport size photographs</li>
+                        </ul>
+                        <h4>Financial Documents:</h4>
+                        <ul>
+                            <li>Salary slips (last 3 months)</li>
+                            <li>Bank statements (last 6 months)</li>
+                            <li>Income tax returns (last 2-3 years)</li>
+                            <li>Form 16 or employment certificate</li>
+                        </ul>
+                    </div>
+                    <div class="content-card">
+                        <h3><i class="bi bi-exclamation-triangle"></i> Important Considerations</h3>
+                        <h4>Key Points to Remember:</h4>
+                        <ul>
+                            <li>Pre-approval doesn't guarantee final loan approval</li>
+                            <li>Interest rates may change at time of disbursal</li>
+                            <li>Property must meet lender's criteria</li>
+                            <li>Validity period is limited (3-6 months)</li>
+                            <li>May involve processing fees</li>
+                        </ul>
+                        <h4>Tips for Success:</h4>
+                        <ul>
+                            <li>Maintain good credit score</li>
+                            <li>Keep all documents ready</li>
+                            <li>Compare offers from multiple lenders</li>
+                            <li>Understand terms and conditions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="content-section">
+            <div class="content-container">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>How accurate is the EMI calculator?</h3>
+                            <i class="bi bi-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Our EMI calculator is highly accurate and uses the standard mathematical formula used by banks and financial institutions. The calculations are precise to the last rupee, helping you plan your finances with confidence. However, the final EMI may vary slightly based on the lender's specific terms and any additional charges.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>What is the difference between fixed and floating interest rates?</h3>
+                            <i class="bi bi-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Fixed interest rates remain constant throughout the loan tenure, providing EMI stability but potentially higher initial rates. Floating rates fluctuate with market conditions, offering potential savings when rates fall but uncertainty in EMI amounts. Most borrowers choose floating rates for potential long-term savings.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>How does prepayment affect my home loan?</h3>
+                            <i class="bi bi-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Prepayment reduces your outstanding principal amount, leading to significant interest savings and shorter loan tenure. You can choose to either reduce your EMI or maintain the same EMI to finish the loan earlier. Use our prepayment calculator to see the exact impact of prepayments on your loan.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>What is the ideal EMI to income ratio?</h3>
+                            <i class="bi bi-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Financial experts recommend keeping your total EMI (including all loans) under 40% of your monthly income. For home loans specifically, 30-35% is considered optimal. This ensures you maintain financial flexibility for other expenses and emergency situations while comfortably servicing your loan.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>Can I change my EMI amount during the loan tenure?</h3>
+                            <i class="bi bi-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, many lenders offer flexible EMI options like step-up EMI (increasing EMI over time) or step-down EMI (decreasing EMI). You can also request EMI changes through loan restructuring, prepayments, or tenure modifications. However, these changes may involve processing fees and lender approval.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>What happens if I miss an EMI payment?</h3>
+                            <i class="bi bi-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Missing EMI payments can result in late payment charges, negative impact on your credit score, and potential legal action for prolonged defaults. Most lenders offer a grace period of 7-15 days. If you anticipate difficulty, contact your lender immediately to discuss restructuring options or temporary relief measures.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>How is the AI recommendation feature helpful?</h3>
+                            <i class="bi bi-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Our AI analyzes your loan parameters and provides personalized recommendations for optimization. It suggests strategies like rate negotiations, tenure adjustments, prepayment schedules, and credit improvement tips. These insights help you save money and make informed decisions about your home loan.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>What additional costs should I consider besides EMI?</h3>
+                            <i class="bi bi-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Besides EMI, consider processing fees, legal and technical evaluation charges, insurance premiums, stamp duty, registration fees, and maintenance costs. Our calculator includes options for processing fees and insurance to give you a more comprehensive cost estimate for your home loan.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="content-section">
+            <div class="content-container">
+                <h2>About AI Calculator</h2>
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h3><i class="bi bi-building"></i> Our Mission</h3>
+                        <p>At AI Calculator, we're committed to making financial planning accessible and intelligent for everyone. Our advanced EMI calculator combines traditional financial mathematics with AI-powered insights to help you make informed decisions about your home loan.</p>
+                        <p>We believe that everyone deserves access to sophisticated financial tools that were once available only to financial professionals. Our platform democratizes financial planning and empowers users to optimize their loan strategies.</p>
+                    </div>
+                    <div class="content-card">
+                        <h3><i class="bi bi-star"></i> Why Choose Us?</h3>
+                        <ul>
+                            <li><strong>AI-Powered Insights:</strong> Get personalized recommendations based on your loan profile</li>
+                            <li><strong>Comprehensive Analysis:</strong> Beyond basic EMI, get detailed amortization and prepayment analysis</li>
+                            <li><strong>User-Friendly Interface:</strong> Intuitive design with real-time calculations and interactive sliders</li>
+                            <li><strong>100% Free:</strong> All features available at no cost with no hidden charges</li>
+                            <li><strong>Privacy Focused:</strong> Your data stays secure and is never shared with third parties</li>
+                            <li><strong>Regular Updates:</strong> Continuously improved based on user feedback and market changes</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="content-card">
+                    <h3><i class="bi bi-graph-up"></i> Our Features</h3>
+                    <div class="content-grid">
+                        <div class="content-card">
+                            <h4><i class="bi bi-calculator"></i> Advanced Calculator</h4>
+                            <p>Real-time EMI calculations with support for different tenure types, processing fees, and insurance premiums. Interactive sliders for easy parameter adjustment.</p>
+                        </div>
+                        <div class="content-card">
+                            <h4><i class="bi bi-robot"></i> AI Recommendations</h4>
+                            <p>Smart suggestions for interest rate optimization, tenure selection, prepayment strategies, and loan amount planning based on your specific situation.</p>
+                        </div>
+                        <div class="content-card">
+                            <h4><i class="bi bi-pie-chart"></i> Visual Analytics</h4>
+                            <p>Interactive charts showing principal vs interest breakdown, amortization schedules, and prepayment impact visualization.</p>
+                        </div>
+                        <div class="content-card">
+                            <h4><i class="bi bi-download"></i> Export Options</h4>
+                            <p>Download detailed amortization schedules in CSV and PDF formats for record-keeping and financial planning.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="content-section">
+            <div class="content-container">
+                <h2>Contact Us</h2>
+                <div class="content-grid">
+                    <div class="content-card">
+                        <h3><i class="bi bi-envelope"></i> Get in Touch</h3>
+                        <p>Have questions about our EMI calculator or need help with your home loan planning? We're here to assist you. Reach out to us through the contact form or use the information provided below.</p>
+                        
+                        <div style="margin-top: 24px;">
+                            <h4>Contact Information:</h4>
+                            <p><i class="bi bi-envelope"></i> Email: support@myaicalculator.xyz</p>
+                            <p><i class="bi bi-globe"></i> Website: https://myaicalculator.xyz</p>
+                            <p><i class="bi bi-clock"></i> Response Time: Within 24 hours</p>
+                        </div>
+                        
+                        <div style="margin-top: 24px;">
+                            <h4>Support Hours:</h4>
+                            <p>Monday to Friday: 9:00 AM - 6:00 PM IST</p>
+                            <p>Saturday: 10:00 AM - 4:00 PM IST</p>
+                            <p>Sunday: Closed</p>
+                        </div>
+                    </div>
+                    
+                    <div class="content-card">
+                        <h3><i class="bi bi-chat-dots"></i> Send us a Message</h3>
+                        <form class="contact-form" onsubmit="submitContactForm(event)">
+                            <div class="form-group">
+                                <label class="form-label">Name</label>
+                                <input type="text" name="name" class="form-input" placeholder="Your Name" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Email</label>
+                                <input type="email" name="email" class="form-input" placeholder="Your Email" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Subject</label>
+                                <select name="subject" class="form-select" required>
+                                    <option value="">Select Subject</option>
+                                    <option value="calculator-help">Calculator Help</option>
+                                    <option value="feature-request">Feature Request</option>
+                                    <option value="bug-report">Bug Report</option>
+                                    <option value="general-inquiry">General Inquiry</option>
+                                    <option value="partnership">Partnership</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Message</label>
+                                <textarea name="message" class="form-input" placeholder="Your Message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary">
+                                <i class="bi bi-send"></i> Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="content-card">
+                    <h3><i class="bi bi-shield-check"></i> Privacy Policy</h3>
+                    <p>Your privacy is important to us. We are committed to protecting your personal information and ensuring transparency in how we collect, use, and safeguard your data.</p>
+                    
+                    <h4>Data Collection:</h4>
+                    <ul>
+                        <li>We only collect information you voluntarily provide through our contact form</li>
+                        <li>Loan calculation data is processed locally and not stored on our servers</li>
+                        <li>We use cookies only for essential website functionality</li>
+                        <li>No personal financial data is transmitted or stored</li>
+                    </ul>
+                    
+                    <h4>Data Usage:</h4>
+                    <ul>
+                        <li>Contact information is used solely to respond to your inquiries</li>
+                        <li>We never share your information with third parties</li>
+                        <li>Data is retained only as long as necessary to provide support</li>
+                        <li>You can request data deletion at any time</li>
+                    </ul>
+                </div>
+                
+                <div class="content-card">
+                    <h3><i class="bi bi-file-text"></i> Terms of Service</h3>
+                    <p>By using our AI Home Loan EMI Calculator, you agree to the following terms and conditions that govern your use of our service.</p>
+                    
+                    <h4>Service Usage:</h4>
+                    <ul>
+                        <li>Our calculator is provided free of charge for personal use</li>
+                        <li>Calculations are for informational purposes only</li>
+                        <li>We recommend consulting financial advisors for major decisions</li>
+                        <li>Service availability may vary due to maintenance or updates</li>
+                    </ul>
+                    
+                    <h4>Accuracy and Liability:</h4>
+                    <ul>
+                        <li>We strive for accuracy but cannot guarantee error-free calculations</li>
+                        <li>Users should verify calculations with their lenders</li>
+                        <li>We are not liable for financial decisions based on our calculations</li>
+                        <li>Always consult professional financial advice for major loans</li>
+                    </ul>
+                    
+                    <h4>Intellectual Property:</h4>
+                    <ul>
+                        <li>All content and calculations are proprietary to AI Calculator</li>
+                        <li>Users may not reproduce or distribute our algorithms</li>
+                        <li>Personal use of results is permitted and encouraged</li>
+                        <li>Commercial use requires explicit written permission</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>AI Calculator</h3>
+                <p>Advanced EMI calculations with AI-powered insights for smarter financial decisions. Plan your home loan with confidence using our comprehensive tools and recommendations.</p>
+                <p>Making financial planning accessible to everyone through innovative technology and user-friendly design.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#calculator">EMI Calculator</a>
+                <a href="#what-is-emi-calculator">About EMI</a>
+                <a href="#how-emi-works">How It Works</a>
+                <a href="#loan-planning">Loan Planning</a>
+                <a href="#best-home-loan-provider">Best Providers</a>
+                <a href="#pre-approved-loan">Pre-Approval</a>
+            </div>
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <a href="#faq">FAQ</a>
+                <a href="#about">About Us</a>
+                <a href="#contact">Contact</a>
+                <a href="https://myaicalculator.xyz">Main Website</a>
+                <a href="#contact">Privacy Policy</a>
+                <a href="#contact">Terms of Service</a>
+            </div>
+            <div class="footer-section">
+                <h3>Features</h3>
+                <a href="#calculator">Real-time Calculations</a>
+                <a href="#calculator">AI Recommendations</a>
+                <a href="#calculator">Prepayment Analysis</a>
+                <a href="#calculator">Amortization Schedule</a>
+                <a href="#calculator">Export Options</a>
+                <a href="#calculator">Visual Charts</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 AI Calculator. All rights reserved. | Advanced Home Loan EMI Calculator with AI Insights</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">
+        <i class="bi bi-arrow-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        // Global variables
+        let currentLoanData = {};
+        let emiChart = null;
+
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeCalculator();
+            initializeEventListeners();
+            initializeBackToTop();
+            initializeSmoothScrolling();
+        });
+
+        // Initialize calculator with default values
+        function initializeCalculator() {
+            setupSliderSync();
+            calculateEMI();
+        }
+
+        // Set up event listeners
+        function initializeEventListeners() {
+            const loanAmount = document.getElementById('loanAmount');
+            const interestRate = document.getElementById('interestRate');
+            const tenure = document.getElementById('tenure');
+            
+            [loanAmount, interestRate, tenure, 
+             document.getElementById('processingFee'), 
+             document.getElementById('insurance')].forEach(input => {
+                input.addEventListener('input', calculateEMI);
+            });
+            
+            document.getElementById('tenureType').addEventListener('change', function() {
+                updateTenureSlider();
+                calculateEMI();
+            });
+        }
+
+        // Setup slider synchronization
+        function setupSliderSync() {
+            const loanAmount = document.getElementById('loanAmount');
+            const loanAmountSlider = document.getElementById('loanAmountSlider');
+            
+            loanAmount.addEventListener('input', function() {
+                loanAmountSlider.value = this.value;
+                calculateEMI();
+            });
+            
+            loanAmountSlider.addEventListener('input', function() {
+                loanAmount.value = this.value;
+                calculateEMI();
+            });
+            
+            const interestRate = document.getElementById('interestRate');
+            const interestRateSlider = document.getElementById('interestRateSlider');
+            
+            interestRate.addEventListener('input', function() {
+                interestRateSlider.value = this.value;
+                calculateEMI();
+            });
+            
+            interestRateSlider.addEventListener('input', function() {
+                interestRate.value = this.value;
+                calculateEMI();
+            });
+            
+            const tenure = document.getElementById('tenure');
+            const tenureSlider = document.getElementById('tenureSlider');
+            
+            tenure.addEventListener('input', function() {
+                tenureSlider.value = this.value;
+                calculateEMI();
+            });
+            
+            tenureSlider.addEventListener('input', function() {
+                tenure.value = this.value;
+                calculateEMI();
+            });
+        }
+
+        // Update tenure slider based on selected type
+        function updateTenureSlider() {
+            const tenureType = document.getElementById('tenureType').value;
+            const tenureSlider = document.getElementById('tenureSlider');
+            const tenure = document.getElementById('tenure');
+            
+            if (tenureType === 'years') {
+                tenureSlider.max = 30;
+                tenureSlider.min = 1;
+                if (tenure.value > 30) tenure.value = 30;
+            } else {
+                tenureSlider.max = 360;
+                tenureSlider.min = 12;
+                if (tenure.value < 12) tenure.value = 12;
+            }
+            
+            tenureSlider.value = tenure.value;
+        }
+
+        // Main EMI calculation function
+        function calculateEMI() {
+            try {
+                const principal = parseFloat(document.getElementById('loanAmount').value) || 0;
+                const annualRate = parseFloat(document.getElementById('interestRate').value) || 0;
+                const tenureValue = parseFloat(document.getElementById('tenure').value) || 0;
+                const tenureType = document.getElementById('tenureType').value;
+                const processingFee = parseFloat(document.getElementById('processingFee').value) || 0;
+                const insurance = parseFloat(document.getElementById('insurance').value) || 0;
+                
+                if (principal <= 0 || annualRate <= 0 || tenureValue <= 0) {
+                    hideResults();
+                    return;
+                }
+                
+                const tenureMonths = tenureType === 'years' ? tenureValue * 12 : tenureValue;
+                const monthlyRate = annualRate / 12 / 100;
+                
+                const emi = (principal * monthlyRate * Math.pow(1 + monthlyRate, tenureMonths)) / 
+                           (Math.pow(1 + monthlyRate, tenureMonths) - 1);
+                
+                const totalAmount = emi * tenureMonths;
+                const totalInterest = totalAmount - principal;
+                const interestPercentage = (totalInterest / totalAmount) * 100;
+                const totalCost = totalAmount + processingFee + (insurance * (tenureType === 'years' ? tenureValue : tenureValue / 12));
+                
+                currentLoanData = {
+                    principal,
+                    annualRate,
+                    tenureMonths,
+                    tenureValue,
+                    tenureType,
+                    emi,
+                    totalAmount,
+                    totalInterest,
+                    processingFee,
+                    insurance,
+                    totalCost
+                };
+                
+                updateResults(emi, totalInterest, totalAmount, interestPercentage);
+                generateAIRecommendations();
+                updateChart();
+                generateAmortizationTable();
+                showResults();
+                
+                console.log('Calculator used - analytics tracking');
+                
+            } catch (error) {
+                console.error('Error calculating EMI:', error);
+                hideResults();
+            }
+        }
+
+        // Update results display
+        function updateResults(emi, totalInterest, totalAmount, interestPercentage) {
+            document.getElementById('monthlyEMI').textContent = formatCurrency(emi);
+            document.getElementById('totalInterest').textContent = formatCurrency(totalInterest);
+            document.getElementById('totalAmount').textContent = formatCurrency(totalAmount);
+            document.getElementById('interestPercentage').textContent = interestPercentage.toFixed(1) + '%';
+        }
+
+        // Generate AI-powered recommendations
+        function generateAIRecommendations() {
+            const recommendations = [];
+            const { principal, annualRate, tenureMonths, emi, totalInterest } = currentLoanData;
+            const monthlyIncome = emi / 0.4; // Assuming 40% EMI-to-income ratio
+            const emiToIncomeRatio = (emi / monthlyIncome) * 100;
+            
+            // Interest Rate Analysis
+            if (annualRate > 9.5) {
+                recommendations.push({
+                    title: 'Critical: High Interest Rate Alert',
+                    message: `Your current rate of ${annualRate}% is significantly above market standards (7.5-9%). This is costing you substantial extra money over the loan tenure.`,
+                    impact: `Reducing rate by 1% could save ₹${formatNumber(calculateRateSavings(1))} in total interest. Consider immediate rate renegotiation or lender switching.`,
+                    priority: 'high',
+                    action: 'Contact your lender immediately for rate review or explore balance transfer options with other banks.'
+                });
+            } else if (annualRate > 8.5) {
+                recommendations.push({
+                    title: 'Interest Rate Optimization Opportunity',
+                    message: `Your rate of ${annualRate}% is above optimal range. Market rates for good credit profiles are typically 7.5-8.5%.`,
+                    impact: `Reducing rate by 0.5% could save ₹${formatNumber(calculateRateSavings(0.5))} in total interest over loan tenure.`,
+                    priority: 'medium',
+                    action: 'Research current market rates and negotiate with your lender or consider refinancing.'
+                });
+            }
+            
+            // EMI-to-Income Ratio Analysis
+            if (emiToIncomeRatio > 50) {
+                recommendations.push({
+                    title: 'Critical: High EMI Burden',
+                    message: `Your EMI represents ${emiToIncomeRatio.toFixed(1)}% of estimated income, which is financially risky. Ideal ratio should be under 40%.`,
+                    impact: `Consider increasing down payment by ₹${formatNumber(principal * 0.2)} to reduce EMI to a safer level of ₹${formatNumber(emi * 0.8)}.`,
+                    priority: 'high',
+                    action: 'Increase down payment, extend tenure carefully, or consider a less expensive property.'
+                });
+            } else if (emiToIncomeRatio > 40) {
+                recommendations.push({
+                    title: 'EMI-to-Income Ratio Advisory',
+                    message: `Your EMI-to-income ratio of ${emiToIncomeRatio.toFixed(1)}% is at the upper limit. This may strain your monthly budget.`,
+                    impact: `Maintaining 6 months EMI as emergency fund (₹${formatNumber(emi * 6)}) is crucial for financial security.`,
+                    priority: 'medium',
+                    action: 'Build emergency fund and avoid additional debt during loan tenure.'
+                });
+            }
+            
+            // Tenure Optimization
+            if (tenureMonths > 300) { // More than 25 years
+                const shorterTenureEMI = calculateEMIForTenure(240);
+                const savings = (emi * tenureMonths) - (shorterTenureEMI * 240);
+                recommendations.push({
+                    title: 'Long Tenure Cost Analysis',
+                    message: `Your ${Math.ceil(tenureMonths/12)}-year tenure significantly increases total interest cost. Shorter tenure means higher EMI but massive savings.`,
+                    impact: `Reducing to 20 years: EMI increases to ₹${formatNumber(shorterTenureEMI)} but saves ₹${formatNumber(savings)} in total interest.`,
+                    priority: 'medium',
+                    action: 'If affordable, reduce tenure or plan regular prepayments to achieve similar savings.'
+                });
+            } else if (tenureMonths < 180) { // Less than 15 years
+                const longerTenureEMI = calculateEMIForTenure(240);
+                const extraInterest = (longerTenureEMI * 240) - (emi * tenureMonths);
+                recommendations.push({
+                    title: 'Short Tenure Efficiency Analysis',
+                    message: `Your ${Math.ceil(tenureMonths/12)}-year tenure is excellent for interest savings but creates higher EMI burden.`,
+                    impact: `Extending to 20 years would reduce EMI to ₹${formatNumber(longerTenureEMI)} but cost additional ₹${formatNumber(extraInterest)} in interest.`,
+                    priority: 'low',
+                    action: 'Current tenure is optimal if EMI is comfortably affordable.'
+                });
+            }
+            
+            // Prepayment Strategy
+            const annualBonus = monthlyIncome * 2; // Assuming 2 months bonus
+            const suggestedPrepayment = Math.min(principal * 0.1, annualBonus);
+            
+            if (suggestedPrepayment > 100000) {
+                const prepaymentSavings = calculatePrepaymentSavings(suggestedPrepayment, 5);
+                recommendations.push({
+                    title: 'Strategic Prepayment Plan',
+                    message: `Annual prepayments can dramatically reduce your interest burden. Consider systematic prepayment strategy using bonuses or surplus income.`,
+                    impact: `Prepaying ₹${formatNumber(suggestedPrepayment)} after 5 years saves ₹${formatNumber(prepaymentSavings.interestSaved)} and reduces tenure by ${Math.ceil(prepaymentSavings.tenureReduction/12)} years.`,
+                    priority: 'high',
+                    action: 'Set up automatic annual prepayment plan using bonuses, increments, or tax refunds.'
+                });
+            }
+            
+            // Credit Score Enhancement
+            if (annualRate > 8.0) {
+                recommendations.push({
+                    title: 'Credit Score Improvement Strategy',
+                    message: `Your current rate suggests scope for credit profile improvement. Excellent credit (750+) typically qualifies for rates 0.5-1% lower.`,
+                    impact: `Improving credit score could help negotiate rates down to 7.5-8%, potentially saving ₹${formatNumber(calculateRateSavings(0.75))} over loan tenure.`,
+                    priority: 'medium',
+                    action: 'Pay all EMIs on time, maintain low credit utilization, avoid new loans, and monitor credit score regularly.'
+                });
+            }
+            
+            // Tax Benefits Analysis
+            const maxTaxBenefit = Math.min(200000, (emi * 12) + 50000); // Principal + interest deduction
+            recommendations.push({
+                title: 'Tax Optimization Benefits',
+                message: `Maximize your home loan tax benefits under Section 80C (principal) and Section 24 (interest deductions).`,
+                impact: `You can claim up to ₹${formatNumber(maxTaxBenefit)} annually in tax deductions, potentially saving ₹${formatNumber(maxTaxBenefit * 0.3)} in taxes at 30% bracket.`,
+                priority: 'medium',
+                action: 'Maintain proper documentation and claim maximum eligible deductions in your tax filing.'
+            });
+            
+            // Insurance Strategy
+            const lifeInsuranceAmount = principal + (emi * 12 * 5); // Loan amount + 5 years EMI
+            recommendations.push({
+                title: 'Financial Protection Strategy',
+                message: `Secure your family against loan liability with adequate term life insurance coverage for the outstanding loan amount.`,
+                impact: `Term insurance for ₹${formatNumber(lifeInsuranceAmount)} typically costs ₹${formatNumber(lifeInsuranceAmount * 0.0005)} annually - minimal cost for maximum protection.`,
+                priority: 'high',
+                action: 'Purchase term life insurance covering loan amount plus 3-5 years additional expenses.'
+            });
+            
+            // Investment vs Prepayment Analysis
+            if (annualRate < 9) {
+                recommendations.push({
+                    title: 'Investment vs Prepayment Analysis',
+                    message: `With your relatively low interest rate of ${annualRate}%, consider balancing prepayments with wealth-building investments.`,
+                    impact: `Equity investments historically return 10-12% annually, potentially outperforming the ${annualRate}% interest savings from prepayment.`,
+                    priority: 'low',
+                    action: 'Allocate surplus funds between loan prepayment (guaranteed savings) and equity investments (potential higher returns).'
+                });
+            }
+            
+            displayRecommendations(recommendations);
+        }
+
+        // Display AI recommendations
+        function displayRecommendations(recommendations) {
+            const container = document.getElementById('aiRecommendations');
+            
+            if (recommendations.length === 0) {
+                container.innerHTML = '<div class="recommendation-item"><h4><i class="bi bi-check-circle"></i> Optimal Configuration</h4><p>Your loan configuration looks well-optimized! Consider the prepayment analysis below for additional savings.</p></div>';
+                return;
+            }
+            
+            // Sort recommendations by priority
+            const priorityOrder = { 'high': 1, 'medium': 2, 'low': 3 };
+            recommendations.sort((a, b) => (priorityOrder[a.priority] || 2) - (priorityOrder[b.priority] || 2));
+            
+            container.innerHTML = recommendations.map(rec => {
+                const priorityIcon = rec.priority === 'high' ? 'exclamation-triangle' : 
+                                   rec.priority === 'low' ? 'info-circle' : 'lightbulb';
+                const priorityClass = `priority-${rec.priority || 'medium'}`;
+                
+                return `
+                    <div class="recommendation-item ${priorityClass}">
+                        <h4><i class="bi bi-${priorityIcon}"></i> ${rec.title}</h4>
+                        <p>${rec.message}</p>
+                        <div class="recommendation-impact"><strong>Impact:</strong> ${rec.impact}</div>
+                        ${rec.action ? `<div class="recommendation-action"><strong>Action:</strong> ${rec.action}</div>` : ''}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Calculate rate savings
+        function calculateRateSavings(rateReduction) {
+            const { principal, annualRate, tenureMonths } = currentLoanData;
+            const newRate = (annualRate - rateReduction) / 12 / 100;
+            const currentRate = annualRate / 12 / 100;
+            
+            const currentTotalInterest = (currentLoanData.emi * tenureMonths) - principal;
+            const newEMI = (principal * newRate * Math.pow(1 + newRate, tenureMonths)) / 
+                           (Math.pow(1 + newRate, tenureMonths) - 1);
+            const newTotalInterest = (newEMI * tenureMonths) - principal;
+            
+            return currentTotalInterest - newTotalInterest;
+        }
+
+        // Calculate EMI for different tenure
+        function calculateEMIForTenure(months) {
+            const { principal, annualRate } = currentLoanData;
+            const monthlyRate = annualRate / 12 / 100;
+            
+            return (principal * monthlyRate * Math.pow(1 + monthlyRate, months)) / 
+                   (Math.pow(1 + monthlyRate, months) - 1);
+        }
+
+        // Update pie chart
+        function updateChart() {
+            const ctx = document.getElementById('emiChart').getContext('2d');
+            
+            if (emiChart) {
+                emiChart.destroy();
+            }
+            
+            const { principal, totalInterest } = currentLoanData;
+            
+            emiChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Principal Amount', 'Total Interest'],
+                    datasets: [{
+                        data: [principal, totalInterest],
+                        backgroundColor: ['#00ffff', '#00ff00'],
+                        borderColor: ['#00d9ff', '#00cc00'],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: '#e2e8f0',
+                                font: {
+                                    size: 14
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Calculate prepayment impact
+        function calculatePrepayment() {
+            const prepaymentAmount = parseFloat(document.getElementById('prepaymentAmount').value) || 0;
+            const prepaymentYear = parseInt(document.getElementById('prepaymentYear').value) || 5;
+            
+            if (prepaymentAmount <= 0) {
+                alert('Please enter a valid prepayment amount');
+                return;
+            }
+            
+            const savings = calculatePrepaymentSavings(prepaymentAmount, prepaymentYear);
+            displayPrepaymentResults(savings, prepaymentAmount);
+        }
+
+        // Calculate prepayment savings
+        function calculatePrepaymentSavings(prepaymentAmount, afterYear) {
+            const { principal, annualRate, tenureMonths, emi } = currentLoanData;
+            const monthlyRate = annualRate / 12 / 100;
+            
+            let remainingBalance = principal;
+            const prepaymentMonth = afterYear * 12;
+            
+            for (let i = 0; i < prepaymentMonth; i++) {
+                const interestPayment = remainingBalance * monthlyRate;
+                const principalPayment = emi - interestPayment;
+                remainingBalance -= principalPayment;
+            }
+            
+            const newBalance = Math.max(0, remainingBalance - prepaymentAmount);
+            
+            if (newBalance === 0) {
+                return {
+                    interestSaved: calculateTotalInterestForBalance(remainingBalance, tenureMonths - prepaymentMonth),
+                    tenureReduction: tenureMonths - prepaymentMonth,
+                    newEMI: 0,
+                    newTenure: prepaymentMonth
+                };
+            }
+            
+            let newTenureMonths = 0;
+            let balance = newBalance;
+            
+            while (balance > 1 && newTenureMonths < (tenureMonths - prepaymentMonth)) {
+                const interestPayment = balance * monthlyRate;
+                const principalPayment = emi - interestPayment;
+                
+                if (principalPayment <= 0) break;
+                
+                balance -= principalPayment;
+                newTenureMonths++;
+            }
+            
+            const originalRemainingInterest = calculateTotalInterestForBalance(remainingBalance, tenureMonths - prepaymentMonth);
+            const newRemainingInterest = calculateTotalInterestForBalance(newBalance, newTenureMonths);
+            
+            return {
+                interestSaved: originalRemainingInterest - newRemainingInterest,
+                tenureReduction: (tenureMonths - prepaymentMonth) - newTenureMonths,
+                newEMI: emi,
+                newTenure: prepaymentMonth + newTenureMonths
+            };
+        }
+
+        // Calculate total interest for remaining balance
+        function calculateTotalInterestForBalance(balance, months) {
+            const { emi } = currentLoanData;
+            return (emi * months) - balance;
+        }
+
+        // Display prepayment results
+        function displayPrepaymentResults(savings, prepaymentAmount) {
+            const resultsDiv = document.getElementById('prepaymentResults');
+            
+            resultsDiv.innerHTML = `
+                <div class="savings-highlight">
+                    <div class="savings-amount">₹${formatNumber(savings.interestSaved)}</div>
+                    <div class="savings-label">Total Interest Savings</div>
+                </div>
+                <div class="prepayment-details">
+                    <div class="savings-detail">
+                        <strong>Tenure Reduction:</strong> ${savings.tenureReduction} months (${(savings.tenureReduction / 12).toFixed(1)} years)
+                    </div>
+                    <div class="savings-detail">
+                        <strong>New Loan Tenure:</strong> ${Math.ceil(savings.newTenure / 12)} years ${savings.newTenure % 12} months
+                    </div>
+                    <div class="savings-detail">
+                        <strong>Prepayment Amount:</strong> ₹${formatNumber(prepaymentAmount)}
+                    </div>
+                </div>
+            `;
+            
+            resultsDiv.style.display = 'block';
+        }
+
+        // Generate amortization table
+        function generateAmortizationTable() {
+            const { principal, annualRate, tenureMonths, emi } = currentLoanData;
+            const monthlyRate = annualRate / 12 / 100;
+            
+            const tbody = document.getElementById('amortizationBody');
+            tbody.innerHTML = '';
+            
+            let balance = principal;
+            const years = Math.ceil(tenureMonths / 12);
+            
+            for (let year = 1; year <= years; year++) {
+                let yearlyInterest = 0;
+                let yearlyPrincipal = 0;
+                let monthsInYear = Math.min(12, tenureMonths - ((year - 1) * 12));
+                
+                for (let month = 1; month <= monthsInYear; month++) {
+                    if (balance <= 0) break;
+                    
+                    const interestPayment = balance * monthlyRate;
+                    const principalPayment = Math.min(emi - interestPayment, balance);
+                    
+                    yearlyInterest += interestPayment;
+                    yearlyPrincipal += principalPayment;
+                    balance -= principalPayment;
+                }
+                
+                const row = tbody.insertRow();
+                row.innerHTML = `
+                    <td>${year}</td>
+                    <td>₹${formatNumber(emi * monthsInYear)}</td>
+                    <td>₹${formatNumber(yearlyPrincipal)}</td>
+                    <td>₹${formatNumber(yearlyInterest)}</td>
+                    <td>₹${formatNumber(Math.max(0, balance))}</td>
+                `;
+                
+                if (balance <= 0) break;
+            }
+        }
+
+        // Export amortization table
+        function exportAmortization(format) {
+            const { principal, annualRate, tenureMonths, emi } = currentLoanData;
+            
+            if (format === 'csv') {
+                let csv = 'Year,Total Payment,Principal,Interest,Outstanding Balance\n';
+                
+                const monthlyRate = annualRate / 12 / 100;
+                let balance = principal;
+                const years = Math.ceil(tenureMonths / 12);
+                
+                for (let year = 1; year <= years; year++) {
+                    let yearlyInterest = 0;
+                    let yearlyPrincipal = 0;
+                    let monthsInYear = Math.min(12, tenureMonths - ((year - 1) * 12));
+                    
+                    for (let month = 1; month <= monthsInYear; month++) {
+                        if (balance <= 0) break;
+                        
+                        const interestPayment = balance * monthlyRate;
+                        const principalPayment = Math.min(emi - interestPayment, balance);
+                        
+                        yearlyInterest += interestPayment;
+                        yearlyPrincipal += principalPayment;
+                        balance -= principalPayment;
+                    }
+                    
+                    csv += `${year},${(emi * monthsInYear).toFixed(2)},${yearlyPrincipal.toFixed(2)},${yearlyInterest.toFixed(2)},${Math.max(0, balance).toFixed(2)}\n`;
+                    
+                    if (balance <= 0) break;
+                }
+                
+                downloadFile(csv, 'home_loan_amortization.csv', 'text/csv');
+            } else if (format === 'pdf') {
+                alert('PDF export feature will be available soon. Please use CSV export for now.');
+            }
+        }
+
+        // Download file helper
+        function downloadFile(content, filename, contentType) {
+            const blob = new Blob([content], { type: contentType });
+            const url = window.URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = filename;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            window.URL.revokeObjectURL(url);
+        }
+
+        // Show/hide results
+        function showResults() {
+            document.getElementById('results').style.display = 'block';
+        }
+
+        function hideResults() {
+            document.getElementById('results').style.display = 'none';
+        }
+
+        // Utility functions
+        function formatCurrency(amount) {
+            return '₹' + formatNumber(amount);
+        }
+
+        function formatNumber(number) {
+            return new Intl.NumberFormat('en-IN').format(Math.round(number));
+        }
+
+        // FAQ functionality
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            const isActive = faqItem.classList.contains('active');
+            
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            if (!isActive) {
+                faqItem.classList.add('active');
+            }
+        }
+
+        // Contact form submission
+        function submitContactForm(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const data = {};
+            formData.forEach((value, key) => data[key] = value);
+            
+            alert('Thank you for your message! We will respond within 24 hours.');
+            event.target.reset();
+        }
+
+        // Back to top functionality
+        function initializeBackToTop() {
+            const backToTopButton = document.getElementById('backToTop');
+            
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            });
+        }
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Smooth scrolling for navigation links
+        function initializeSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const href = this.getAttribute('href');
+                    if (href && href !== '#') {
+                        const target = document.querySelector(href);
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    }
+                });
+            });
+        }
+
+        // Mobile menu functionality
+        function toggleMobileMenu() {
+            console.log('Mobile menu toggle - to be implemented');
+        }
+
+        // Error handling
+        window.addEventListener('error', function(e) {
+            console.error('Application error:', e.error);
+        });
+    </script>
+</body>
+</html>
