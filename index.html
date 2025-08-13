@@ -29,9 +29,9 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free AI Calculator | Advanced Online Calculator Tools with Natural Language Processing All-in-One Scientific, Financial & Math Tools</title>
+    <title>Free AI Calculator | Advanced Online Calculator Tools with Natural Language Processing</title>
     <meta name="description" content="Free AI Calculator with natural language processing. Includes scientific, BMI, mortgage, investment, tax, and loan EMI calculators. Advanced calculation tools for personal and professional use.">
-    <meta name="keywords" content="AI Calculator, online calculator, online calculator tool , free calculator, scientific calculator, AI math solver , BMI calculator, mortgage calculator, investment calculator, investment return calculator, tax calculator, loan EMI calculator, financial tools, AI financial tools, natural language calculator, math calculator">
+    <meta name="keywords" content="AI Calculator, online calculator, free calculator, scientific calculator, BMI calculator, mortgage calculator, investment calculator, tax calculator, loan EMI calculator, financial tools, natural language calculator, math calculator">
     <meta name="author" content="AI Calculator">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="googlebot" content="index, follow">
@@ -212,6 +212,8 @@
                         'glow': 'glow 2s ease-in-out infinite alternate',
                         'slide-up': 'slideUp 0.5s ease-out',
                         'bounce-in': 'bounceIn 0.6s ease-out',
+                        'modal-show': 'modalShow 0.3s ease-out',
+                        'modal-hide': 'modalHide 0.3s ease-in',
                     },
                     keyframes: {
                         float: {
@@ -231,6 +233,14 @@
                             '50%': { opacity: '1', transform: 'scale(1.05)' },
                             '70%': { transform: 'scale(0.9)' },
                             '100%': { opacity: '1', transform: 'scale(1)' },
+                        },
+                        modalShow: {
+                            '0%': { opacity: '0', transform: 'scale(0.9) translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'scale(1) translateY(0)' },
+                        },
+                        modalHide: {
+                            '0%': { opacity: '1', transform: 'scale(1) translateY(0)' },
+                            '100%': { opacity: '0', transform: 'scale(0.9) translateY(20px)' },
                         },
                     },
                 }
@@ -451,6 +461,71 @@
         .mobile-submenu-item:hover {
             color: #00d9ff;
             background: rgba(0, 217, 255, 0.1);
+        }
+
+        /* Modal Styles */
+        .modal-backdrop {
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 217, 255, 0.3);
+        }
+
+        .modal-show {
+            animation: modalShow 0.3s ease-out forwards;
+        }
+
+        .modal-hide {
+            animation: modalHide 0.3s ease-in forwards;
+        }
+
+        /* Enhanced FAQ Styles */
+        .faq-item {
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 217, 255, 0.2);
+        }
+
+        .faq-item:hover {
+            border-color: rgba(0, 217, 255, 0.4);
+            box-shadow: 0 4px 20px rgba(0, 217, 255, 0.1);
+        }
+
+        .faq-question {
+            cursor: pointer;
+            position: relative;
+            padding-right: 3rem;
+        }
+
+        .faq-question::after {
+            content: '+';
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            color: #00d9ff;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question.active::after {
+            transform: translateY(-50%) rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            opacity: 0;
+        }
+
+        .faq-answer.show {
+            max-height: 500px;
+            opacity: 1;
+            padding: 1rem 1.5rem 1.5rem;
         }
     </style>
 </head>
@@ -1133,21 +1208,88 @@
                         AI Calculator represents the next generation of computational tools, combining the power of artificial intelligence with traditional mathematical precision. Our platform makes complex calculations accessible to everyone through natural language processing.
                     </p>
                     
-                    <!-- SEO-friendly FAQ Section -->
+                    <!-- Enhanced FAQ Section -->
                     <div class="mt-12 text-left max-w-3xl mx-auto">
                         <h3 class="text-2xl font-bold mb-6 text-accent text-center">Frequently Asked Questions</h3>
-                        <div class="space-y-6">
-                            <div class="glass-morphism rounded-xl p-6">
-                                <h4 class="text-lg font-semibold mb-2 text-lime-bright">What makes AI Calculator different from other online calculators?</h4>
-                                <p class="text-gray-300">AI Calculator uses advanced natural language processing to understand questions in plain English, making it easier to perform complex calculations without learning specific syntax or formulas.</p>
+                        <div class="space-y-4">
+                            <!-- FAQ Item 1 -->
+                            <div class="faq-item glass-morphism rounded-xl overflow-hidden">
+                                <div class="faq-question p-6 hover:bg-white/5" onclick="toggleFAQ(1)">
+                                    <h4 class="text-lg font-semibold text-lime-bright">What makes AI Calculator different from other online calculators?</h4>
+                                </div>
+                                <div class="faq-answer" id="faq-1">
+                                    <p class="text-gray-300">AI Calculator uses advanced natural language processing to understand questions in plain English, making it easier to perform complex calculations without learning specific syntax or formulas. You can ask questions like "What's 15% of 240?" or "Calculate compound interest on $5000 for 5 years at 7%" and get instant, accurate results.</p>
+                                </div>
                             </div>
-                            <div class="glass-morphism rounded-xl p-6">
-                                <h4 class="text-lg font-semibold mb-2 text-lime-bright">Are all calculator tools completely free to use?</h4>
-                                <p class="text-gray-300">Yes, all our calculator tools including the AI calculator, scientific calculator, BMI calculator, mortgage calculator, investment calculator, and tax calculator are completely free with no registration required.</p>
+
+                            <!-- FAQ Item 2 -->
+                            <div class="faq-item glass-morphism rounded-xl overflow-hidden">
+                                <div class="faq-question p-6 hover:bg-white/5" onclick="toggleFAQ(2)">
+                                    <h4 class="text-lg font-semibold text-lime-bright">Are all calculator tools completely free to use?</h4>
+                                </div>
+                                <div class="faq-answer" id="faq-2">
+                                    <p class="text-gray-300">Yes, all our calculator tools including the AI calculator, scientific calculator, BMI calculator, mortgage calculator, investment calculator, and tax calculator are completely free with no registration required. There are no hidden costs, subscription fees, or premium features.</p>
+                                </div>
                             </div>
-                            <div class="glass-morphism rounded-xl p-6">
-                                <h4 class="text-lg font-semibold mb-2 text-lime-bright">Is the AI Calculator accurate for financial calculations?</h4>
-                                <p class="text-gray-300">Our calculators use industry-standard formulas and are designed for accuracy. However, for major financial decisions, we recommend consulting with qualified financial professionals.</p>
+
+                            <!-- FAQ Item 3 -->
+                            <div class="faq-item glass-morphism rounded-xl overflow-hidden">
+                                <div class="faq-question p-6 hover:bg-white/5" onclick="toggleFAQ(3)">
+                                    <h4 class="text-lg font-semibold text-lime-bright">Is the AI Calculator accurate for financial calculations?</h4>
+                                </div>
+                                <div class="faq-answer" id="faq-3">
+                                    <p class="text-gray-300">Our calculators use industry-standard formulas and are designed for accuracy. However, for major financial decisions, we recommend consulting with qualified financial professionals. All calculations are performed locally in your browser for maximum privacy and security.</p>
+                                </div>
+                            </div>
+
+                            <!-- FAQ Item 4 -->
+                            <div class="faq-item glass-morphism rounded-xl overflow-hidden">
+                                <div class="faq-question p-6 hover:bg-white/5" onclick="toggleFAQ(4)">
+                                    <h4 class="text-lg font-semibold text-lime-bright">Which devices and browsers are supported?</h4>
+                                </div>
+                                <div class="faq-answer" id="faq-4">
+                                    <p class="text-gray-300">Our calculator platform works on all modern devices and browsers including Chrome, Firefox, Safari, and Edge. It's fully responsive and optimized for desktop computers, tablets, and smartphones, providing a seamless experience across all platforms.</p>
+                                </div>
+                            </div>
+
+                            <!-- FAQ Item 5 -->
+                            <div class="faq-item glass-morphism rounded-xl overflow-hidden">
+                                <div class="faq-question p-6 hover:bg-white/5" onclick="toggleFAQ(5)">
+                                    <h4 class="text-lg font-semibold text-lime-bright">Is my calculation data secure and private?</h4>
+                                </div>
+                                <div class="faq-answer" id="faq-5">
+                                    <p class="text-gray-300">Absolutely! All calculations are performed locally in your browser - your data never leaves your device. We don't store, track, or collect any of your calculation data. Your privacy is our top priority, and we use minimal cookies only for essential functionality.</p>
+                                </div>
+                            </div>
+
+                            <!-- FAQ Item 6 -->
+                            <div class="faq-item glass-morphism rounded-xl overflow-hidden">
+                                <div class="faq-question p-6 hover:bg-white/5" onclick="toggleFAQ(6)">
+                                    <h4 class="text-lg font-semibold text-lime-bright">Do you offer customer support?</h4>
+                                </div>
+                                <div class="faq-answer" id="faq-6">
+                                    <p class="text-gray-300">Yes! We provide comprehensive customer support via email. If you have questions, suggestions, or need help with any of our tools, feel free to contact us at creationsdigitalai@gmail.com. We typically respond within 24 hours.</p>
+                                </div>
+                            </div>
+
+                            <!-- FAQ Item 7 -->
+                            <div class="faq-item glass-morphism rounded-xl overflow-hidden">
+                                <div class="faq-question p-6 hover:bg-white/5" onclick="toggleFAQ(7)">
+                                    <h4 class="text-lg font-semibold text-lime-bright">Can I request new calculator tools?</h4>
+                                </div>
+                                <div class="faq-answer" id="faq-7">
+                                    <p class="text-gray-300">Absolutely! We're constantly expanding our calculator suite based on user feedback. If you need a specific calculator that we don't currently offer, please reach out to us with your request and we'll consider adding it to our platform.</p>
+                                </div>
+                            </div>
+
+                            <!-- FAQ Item 8 -->
+                            <div class="faq-item glass-morphism rounded-xl overflow-hidden">
+                                <div class="faq-question p-6 hover:bg-white/5" onclick="toggleFAQ(8)">
+                                    <h4 class="text-lg font-semibold text-lime-bright">Are there any usage limits or restrictions?</h4>
+                                </div>
+                                <div class="faq-answer" id="faq-8">
+                                    <p class="text-gray-300">No! There are no usage limits, daily caps, or restrictions on any of our calculator tools. You can perform unlimited calculations and use all features as much as you need, completely free of charge. No account creation required.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1238,9 +1380,9 @@
                         <li><a href="#about" class="hover:text-accent transition-colors">About Us</a></li>
                         <li><a href="#about" class="hover:text-accent transition-colors">FAQ</a></li>
                         <li><a href="#home" class="hover:text-accent transition-colors">How to Use</a></li>
-                        <li><a href="https://myaicalculator.xyz/privacy-policy" class="hover:text-accent transition-colors">Privacy Policy</a></li>
-                        <li><a href="https://myaicalculator.xyz/terms-of-service" class="hover:text-accent transition-colors">Terms of Service</a></li>
-                        <li><a href="https://myaicalculator.xyz/contact-us" class="hover:text-accent transition-colors">Contact Support</a></li>
+                        <li><a href="javascript:void(0)" onclick="openModal('privacy-modal')" class="hover:text-accent transition-colors">Privacy Policy</a></li>
+                        <li><a href="javascript:void(0)" onclick="openModal('terms-modal')" class="hover:text-accent transition-colors">Terms of Service</a></li>
+                        <li><a href="javascript:void(0)" onclick="openModal('contact-modal')" class="hover:text-accent transition-colors">Contact Support</a></li>
                     </ul>
                 </div>
             </div>
@@ -1282,8 +1424,161 @@
         <p>Get in touch with our team for support, feedback, or business inquiries.</p>
     </div>
 
+    <!-- Modal HTML -->
+    <!-- Privacy Policy Modal -->
+    <div id="privacy-modal" class="fixed inset-0 z-50 hidden">
+        <div class="modal-backdrop fixed inset-0" onclick="closeModal('privacy-modal')"></div>
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="modal-content relative w-full max-w-2xl mx-auto rounded-2xl p-8 max-h-[80vh] overflow-y-auto">
+                <button onclick="closeModal('privacy-modal')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-3xl leading-none">&times;</button>
+                <h2 class="text-2xl font-bold text-accent mb-6">Privacy Policy</h2>
+                <div class="text-gray-300 space-y-4">
+                    <p><strong>Last updated:</strong> August 13, 2025</p>
+                    
+                    <h3 class="text-lg font-semibold text-lime-bright mt-6 mb-3">Information We Collect</h3>
+                    <p>AI Calculator is designed with privacy in mind. We collect minimal information to provide our services:</p>
+                    <ul class="list-disc ml-6 space-y-2">
+                        <li>Basic analytics data (page views, device type) for improving user experience</li>
+                        <li>No personal information or calculation data is stored</li>
+                        <li>All calculations are performed locally in your browser</li>
+                    </ul>
+
+                    <h3 class="text-lg font-semibold text-lime-bright mt-6 mb-3">How We Use Your Information</h3>
+                    <p>The limited data we collect is used solely to:</p>
+                    <ul class="list-disc ml-6 space-y-2">
+                        <li>Improve website performance and user experience</li>
+                        <li>Monitor technical issues and optimize our platform</li>
+                        <li>Understand usage patterns to enhance our calculator tools</li>
+                    </ul>
+
+                    <h3 class="text-lg font-semibold text-lime-bright mt-6 mb-3">Data Security</h3>
+                    <p>Your privacy is our top priority. We implement industry-standard security measures to protect any data we process. All calculations remain on your device and are never transmitted to our servers.</p>
+
+                    <h3 class="text-lg font-semibold text-lime-bright mt-6 mb-3">Third-Party Services</h3>
+                    <p>We may use third-party analytics services that have their own privacy policies. We ensure these services comply with privacy standards and minimize data collection.</p>
+
+                    <h3 class="text-lg font-semibold text-lime-bright mt-6 mb-3">Contact Us</h3>
+                    <p>If you have questions about this Privacy Policy, please contact us at <a href="mailto:creationsdigitalai@gmail.com" class="text-accent hover:underline">creationsdigitalai@gmail.com</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms of Service Modal -->
+    <div id="terms-modal" class="fixed inset-0 z-50 hidden">
+        <div class="modal-backdrop fixed inset-0" onclick="closeModal('terms-modal')"></div>
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="modal-content relative w-full max-w-2xl mx-auto rounded-2xl p-8 max-h-[80vh] overflow-y-auto">
+                <button onclick="closeModal('terms-modal')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-3xl leading-none">&times;</button>
+                <h2 class="text-2xl font-bold text-accent mb-6">Terms of Service</h2>
+                <div class="text-gray-300 space-y-4">
+                    <p><strong>Last updated:</strong> August 13, 2025</p>
+
+                    <h3 class="text-lg font-semibold text-lime-bright mt-6 mb-3">Acceptance of Terms</h3>
+                    <p>By accessing and using AI Calculator, you accept and agree to be bound by the terms and provision of this agreement.</p>
+
+                    <h3 class="text-lg font-semibold text-lime-bright mt-6 mb-3">Use License</h3>
+                    <p>Permission is granted to use AI Calculator for personal and commercial purposes. This license shall automatically terminate if you violate any of these restrictions.</p>
+
+                    <h3 class="text-lg font-semibold text-lime-bright mt-6 mb-3">Disclaimer</h3>
+                    <p>The calculations provided by AI Calculator are for informational purposes only. While we strive for accuracy, we cannot guarantee the correctness of all calculations. For important financial or professional decisions, please consult with qualified professionals.</p>
+
+                    <h3 class="text-lg font-semibold text-lime-bright mt-6 mb-3">Limitations</h3>
+                    <p>AI Calculator and its suppliers will not be liable for any damages arising from the use or inability to use our services, even if we have been notified of the possibility of such damage.</p>
+
+                    <h3 class="text-lg font-semibold text-lime-bright mt-6 mb-3">Revisions</h3>
+                    <p>We may revise these terms at any time without notice. By using this website, you agree to be bound by the current version of these Terms of Service.</p>
+
+                    <h3 class="text-lg font-semibold text-lime-bright mt-6 mb-3">Contact Information</h3>
+                    <p>Questions about the Terms of Service should be sent to us at <a href="mailto:creationsdigitalai@gmail.com" class="text-accent hover:underline">creationsdigitalai@gmail.com</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Support Modal -->
+    <div id="contact-modal" class="fixed inset-0 z-50 hidden">
+        <div class="modal-backdrop fixed inset-0" onclick="closeModal('contact-modal')"></div>
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="modal-content relative w-full max-w-lg mx-auto rounded-2xl p-8">
+                <button onclick="closeModal('contact-modal')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-3xl leading-none">&times;</button>
+                <h2 class="text-2xl font-bold text-accent mb-6">Contact Support</h2>
+                <div class="text-gray-300 space-y-6">
+                    <p>We're here to help! If you have questions, suggestions, or need assistance with any of our calculator tools, please don't hesitate to reach out.</p>
+                    
+                    <div class="bg-white/5 rounded-lg p-6 border border-accent/20">
+                        <h3 class="text-lg font-semibold text-lime-bright mb-3">Email Support</h3>
+                        <p class="mb-2">Send us an email and we'll get back to you within 24 hours:</p>
+                        <a href="mailto:creationsdigitalai@gmail.com" class="text-accent text-lg font-semibold hover:underline">creationsdigitalai@gmail.com</a>
+                    </div>
+
+                    <div class="space-y-3">
+                        <h3 class="text-lg font-semibold text-lime-bright">What we can help with:</h3>
+                        <ul class="list-disc ml-6 space-y-1 text-sm">
+                            <li>Questions about calculator functionality</li>
+                            <li>Technical support and troubleshooting</li>
+                            <li>Feature requests and suggestions</li>
+                            <li>Report bugs or issues</li>
+                            <li>General feedback about our platform</li>
+                        </ul>
+                    </div>
+
+                    <p class="text-sm text-gray-400">Response time: Typically within 24 hours during business days</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- JavaScript -->
     <script>
+        // Modal Functions
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            const modalContent = modal.querySelector('.modal-content');
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+            
+            setTimeout(() => {
+                modalContent.classList.add('modal-show');
+            }, 10);
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            const modalContent = modal.querySelector('.modal-content');
+            
+            modalContent.classList.remove('modal-show');
+            modalContent.classList.add('modal-hide');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                modalContent.classList.remove('modal-hide');
+                document.body.style.overflow = '';
+            }, 300);
+        }
+
+        // FAQ Toggle Function
+        function toggleFAQ(number) {
+            const question = document.querySelector(`#faq-${number}`).previousElementSibling;
+            const answer = document.getElementById(`faq-${number}`);
+            
+            question.classList.toggle('active');
+            answer.classList.toggle('show');
+        }
+
+        // ESC key to close modals
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const openModal = document.querySelector('.fixed:not(.hidden)');
+                if (openModal && openModal.id.includes('modal')) {
+                    closeModal(openModal.id);
+                }
+            }
+        });
+
         // Mobile menu toggle
         document.getElementById('mobile-menu-btn').addEventListener('click', function() {
             const menu = document.getElementById('mobile-menu');
