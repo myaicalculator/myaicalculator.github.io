@@ -4,16 +4,22 @@
   <!-- Homepage -->
   <url>
     <loc>https://myaicalculator.xyz/</loc>
+    <lastmod>2025-09-02</lastmod>
+    <priority>1.0</priority>
   </url>
 
   <!-- Retirement Calculator -->
   <url>
     <loc>https://myaicalculator.xyz/retirement-calculator</loc>
+    <lastmod>2025-09-02</lastmod>
+    <priority>0.8</priority>
   </url>
 
   <!-- Home Loan EMI Calculator -->
   <url>
     <loc>https://myaicalculator.xyz/home-loan-emi-calculator.html</loc>
+    <lastmod>2025-09-02</lastmod>
+    <priority>0.8</priority>
   </url>
 
 </urlset>
