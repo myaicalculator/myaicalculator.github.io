@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
+
   <!-- Homepage -->
   <url>
     <loc>https://myaicalculator.xyz/</loc>
@@ -9,13 +9,19 @@
 
   <!-- Retirement Calculator -->
   <url>
-    <loc>https://myaicalculator.xyz/retirement-calculator.html</loc>
+    <loc>https://myaicalculator.xyz/retirement-calculator/</loc>
     <priority>0.8</priority>
   </url>
 
   <!-- Home Loan EMI Calculator -->
   <url>
-    <loc>https://myaicalculator.xyz/home-loan-emi-calculator.html</loc>
+    <loc>https://myaicalculator.xyz/home-loan-emi-calculator/</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Solar Calculator -->
+  <url>
+    <loc>https://myaicalculator.xyz/solar-calculator/</loc>
     <priority>0.8</priority>
   </url>
 
