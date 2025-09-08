@@ -501,6 +501,7 @@
                                     <a href="https://myaicalculator.xyz/home-loan-emi-calculator/" class="submenu-item">Home Loan EMI Calculator</a>
                                     <a href="https://myaicalculator.xyz/compound-interest-calculator" class="submenu-item">Compound Interest</a>
                                     <a href="https://myaicalculator.xyz/retirement-calculator/" class="submenu-item">Retirement Planning</a>
+                                    <a href="https://myaicalculator.xyz/solar-calculator/" class="submenu-item">Solar Calculator</a>
                                 </div>
                             </div>
                             
@@ -1143,6 +1144,16 @@
           Plan your retirement savings and secure your financial future.
         </p>
       </a>
+
+      <!-- Solar Calculator -->
+      <a href="https://myaicalculator.xyz/solar-calculator/" 
+         class="block p-6 rounded-2xl bg-white/10 hover:bg-white/20 backdrop-blur-lg shadow-lg transition transform hover:-translate-y-1 hover:shadow-2xl">
+        <h3 class="text-xl font-semibold text-white mb-2">☀️ Solar Calculator</h3>
+        <p class="text-gray-300 text-sm">
+          Calculate solar savings, subsidies, payback period, and ROI for rooftop solar in India.
+        </p>
+      </a>
+
     </div>
   </div>
 </section>
@@ -1958,23 +1969,4 @@
             // Animate elements on scroll
             const observerOptions = {
                 threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const observer = new IntersectionObserver(function(entries) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.animationDelay = '0.2s';
-                        entry.target.classList.add('animate-slide-up');
-                    }
-                });
-            }, observerOptions);
-
-            // Observe calculator cards
-            document.querySelectorAll('.glass-morphism').forEach(card => {
-                observer.observe(card);
-            });
-        });
-    </script>
-</body>
-</html>
+                rootMargin
