@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Solar Calculator — myAIcalculator</title>
+  <meta name="description" content="Detailed solar calculator — system size, cost, subsidy and payback for rooftop solar in India.">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"How much area for 1 kW?","acceptedAnswer":{"@type":"Answer","text":"Approximately 100 sq.ft per kW depending on panel wattage and mounting."}},
+      {"@type":"Question","name":"Is rooftop solar worth it?","acceptedAnswer":{"@type":"Answer","text":"Often worth it when payback is under 8-10 years; subsidies and high tariffs shorten payback."}}
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand"><img src="assets/images/logo.svg" alt="logo"><div><strong>myAIcalculator</strong></div></div>
+      <nav><ul><li><a href="index.html">Home</a></li><li><a href="guide.html">Guide</a></li><li><a href="blog/index.html">Blog</a></li></ul></nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h1>Solar Calculator — Detailed</h1>
+      <p class="small">Enter your details for a precise estimate.</p>
+
+      <div class="form-row" style="margin-top:12px">
+        <div style="flex:1">
+          <label>Monthly bill (₹)</label>
+          <input id="bill" type="number" placeholder="4500">
+        </div>
+        <div style="width:160px">
+          <label>Monthly units (kWh)</label>
+          <input id="units" type="number" placeholder="350">
+        </div>
+      </div>
+
+      <div class="form-row" style="margin-top:12px">
+        <div style="flex:1">
+          <label>City</label>
+          <input id="city" placeholder="Jaipur">
+        </div>
+        <div style="width:160px">
+          <label>State</label>
+          <select id="state"></select>
+        </div>
+      </div>
+
+      <div class="form-row" style="margin-top:12px">
+        <div style="flex:1">
+          <label>Available roof (sq.ft)</label>
+          <input id="roof" type="number" placeholder="250">
+        </div>
+        <div style="width:160px">
+          <label>Panel Wp (optional)</label>
+          <input id="panelWp" type="number" placeholder="320">
+        </div>
+      </div>
+
+      <div class="form-row" style="margin-top:12px">
+        <div style="flex:1">
+          <label>Include battery?</label>
+          <select id="batteryOpt"><option value="no">No</option><option value="yes">Yes</option></select>
+        </div>
+        <div style="width:160px">
+          <label>System type</label>
+          <select id="systemType"><option>On-grid</option><option>Hybrid</option><option>Off-grid</option></select>
+        </div>
+      </div>
+
+      <div style="margin-top:12px">
+        <button class="btn" onclick="calculateFromForm('')">Calculate & Recommend</button>
+        <button class="btn" onclick="generateReportText()">Copy Report</button>
+      </div>
+
+      <div class="results-grid" style="margin-top:16px">
+        <div class="metric"><div class="small">Recommended system (kW)</div><div class="value" id="res_kw">—</div></div>
+        <div class="metric"><div class="small">Estimated installation cost</div><div class="value" id="res_cost">—</div></div>
+        <div class="metric"><div class="small">Estimated subsidy</div><div class="value" id="res_subsidy">—</div></div>
+        <div class="metric"><div class="small">Monthly savings</div><div class="value" id="res_monthly_saving">—</div></div>
+      </div>
+
+      <div class="ai-box" style="margin-top:12px">
+        <div style="display:flex;justify-content:space-between">
+          <div><strong id="aiVerdict">—</strong></div>
+          <div class="small" id="aiConfidence">Confidence —</div>
+        </div>
+        <p id="aiParagraph">Detailed recommendation will appear here.</p>
+        <ul id="aiList"></ul>
+      </div>
+
+    </section>
+
+    <section class="card" style="margin-top:12px">
+      <h2>Notes & Next Steps</h2>
+      <ol class="small">
+        <li>Get 3 itemized quotes from installers.</li>
+        <li>Confirm net-metering with DISCOM.</li>
+        <li>Check warranty and panel degradation profile.</li>
+      </ol>
+    </section>
+
+  </main>
+
+  <footer><div class="container small">myAIcalculator — Estimates only. For exact quotes contact installers.</div></footer>
+  <script src="assets/js/main.js"></script>
+  <script>populateStates('state');</script>
+</body>
+</html>
